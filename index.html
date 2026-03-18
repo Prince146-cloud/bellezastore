@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Belleza Store Style | Elegance Redefined</title>
+    <link rel="icon" href="https://i.imgur.com/XoNuPc2.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Poppins:wght@200;300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root{
+            --primary:#1a1a2e;--accent:#e94560;--accent2:#c2185b;
+            --gold:#d4a574;--gold-light:#e8c9a0;--cream:#faf5f0;
+            --white:#fff;--dark:#0a0a0a;--text:#2c2c2c;--text-light:#6b6b6b;
+            --green:#25D366;--radius:16px;--radius-lg:24px;--radius-full:50px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;overflow-x:hidden}
+        body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--accent));border-radius:10px}
+        img{max-width:100%}
+
+        .preloader{position:fixed;inset:0;background:var(--dark);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;z-index:99999;transition:opacity .6s,visibility .6s}
+        .preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .preloader-logo{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);animation:pGlow 1.5s ease-in-out infinite}
+        .preloader-text{font-family:'Playfair Display',serif;color:var(--gold);font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+        .preloader-bar{width:140px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+        .preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--gold),var(--accent));animation:pLoad 1s ease-in-out infinite}
+        @keyframes pLoad{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+        @keyframes pGlow{0%,100%{box-shadow:0 0 20px rgba(212,165,116,.3);transform:scale(1)}50%{box-shadow:0 0 40px rgba(212,165,116,.6);transform:scale(1.05)}}
+
+        .navbar{position:fixed;top:0;left:0;width:100%;z-index:9999;padding:10px 0;transition:all .4s}
+        .navbar.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);box-shadow:0 2px 20px rgba(0,0,0,.06);padding:6px 0}
+        .nav-container{max-width:1400px;margin:0 auto;padding:0 15px;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;z-index:100}
+        .nav-logo img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);box-shadow:0 3px 12px rgba(212,165,116,.3);transition:all .3s}
+        .navbar.scrolled .nav-logo img{width:40px;height:40px}
+        .nav-logo-text{display:flex;flex-direction:column}
+        .brand-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--white);line-height:1.1;transition:color .4s}
+        .navbar.scrolled .brand-name{color:var(--primary)}
+        .brand-tagline{font-family:'Dancing Script',cursive;font-size:.68rem;color:var(--gold-light);transition:color .4s}
+        .navbar.scrolled .brand-tagline{color:var(--gold)}
+        .nav-links{display:none;list-style:none;gap:4px;align-items:center}
+        .nav-links a{text-decoration:none;color:var(--white);font-size:.82rem;font-weight:500;padding:8px 16px;border-radius:30px;transition:all .3s}
+        .navbar.scrolled .nav-links a{color:var(--text)}
+        .nav-links a:hover{background:rgba(233,69,96,.1);color:var(--accent)}
+        .nav-links a.active{background:var(--accent);color:var(--white)!important}
+        .nav-cta{background:linear-gradient(135deg,var(--gold),var(--accent))!important;color:var(--white)!important;font-weight:600!important}
+        .menu-toggle{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:100;padding:8px;background:0;border:0}
+        .menu-toggle span{width:24px;height:2.5px;background:var(--white);border-radius:3px;transition:all .4s cubic-bezier(.68,-.55,.265,1.55)}
+        .navbar.scrolled .menu-toggle span{background:var(--primary)}
+        .menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);background:var(--accent)}
+        .menu-toggle.active span:nth-child(2){opacity:0;transform:translateX(-20px)}
+        .menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);background:var(--accent)}
+        .mobile-menu{position:fixed;inset:0;background:rgba(10,10,10,.98);backdrop-filter:blur(30px);z-index:99;display:flex;align-items:center;justify-content:center;flex-direction:column;opacity:0;visibility:hidden;transition:all .4s}
+        .mobile-menu.active{opacity:1;visibility:visible}
+        .mobile-menu a{text-decoration:none;color:var(--white);font-family:'Playfair Display',serif;font-size:1.5rem;padding:12px 0;transform:translateY(20px);opacity:0;transition:all .4s;display:block}
+        .mobile-menu.active a{transform:translateY(0);opacity:1}
+        .mobile-menu a:nth-child(1){transition-delay:.05s}.mobile-menu a:nth-child(2){transition-delay:.1s}.mobile-menu a:nth-child(3){transition-delay:.15s}.mobile-menu a:nth-child(4){transition-delay:.2s}.mobile-menu a:nth-child(5){transition-delay:.25s}.mobile-menu a:nth-child(6){transition-delay:.3s}.mobile-menu a:nth-child(7){transition-delay:.35s}
+        .mm-social{display:flex;gap:14px;margin-top:25px;transform:translateY(20px);opacity:0;transition:all .4s ease .4s}
+        .mobile-menu.active .mm-social{transform:translateY(0);opacity:1}
+        .mm-social a{font-size:1rem!important;padding:10px!important;width:44px;height:44px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex!important;align-items:center;justify-content:center}
+
+        .hero{min-height:100vh;min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        .hero-bg{position:absolute;inset:0}.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top}
+        .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.2) 65%,rgba(0,0,0,.75) 100%);z-index:1}
+        .particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+        .particle{position:absolute;width:3px;height:3px;background:rgba(255,255,255,.25);border-radius:50%;animation:floatP linear infinite}
+        @keyframes floatP{0%{transform:translateY(100vh);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-10vh);opacity:0}}
+        .hero-content{position:relative;z-index:2;text-align:center;padding:0 15px;max-width:850px}
+        .hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);padding:6px 16px;border-radius:50px;border:1px solid rgba(255,255,255,.2);color:var(--white);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;animation:fadeInDown .8s ease .3s both}
+        .hero-badge .dot{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:blink 1.5s ease infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+        .hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--white);line-height:1.15;margin-bottom:14px;animation:fadeInUp .8s ease .5s both}
+        .hero h1 span{font-style:italic;background:linear-gradient(135deg,var(--gold-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{font-size:.88rem;color:rgba(255,255,255,.85);max-width:550px;margin:0 auto 22px;line-height:1.7;font-weight:300;animation:fadeInUp .8s ease .7s both}
+        .hero-buttons{display:flex;flex-direction:column;gap:10px;align-items:center;animation:fadeInUp .8s ease .9s both}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+
+        .btn{padding:12px 28px;border-radius:var(--radius-full);text-decoration:none;font-size:.84rem;font-weight:600;letter-spacing:.5px;transition:all .3s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:0;justify-content:center;width:100%;max-width:260px;font-family:'Poppins',sans-serif}
+        .btn-primary{background:var(--accent);color:var(--white);box-shadow:0 6px 20px rgba(233,69,96,.35)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(233,69,96,.45)}
+        .btn-secondary{background:0;color:var(--white);border:2px solid rgba(255,255,255,.35)}
+        .btn-secondary:hover{background:var(--white);color:var(--primary);border-color:var(--white)}
+        .btn-whatsapp{background:var(--green);color:var(--white);box-shadow:0 6px 20px rgba(37,211,102,.3)}
+        .btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,211,102,.4)}
+        .btn-gold{background:linear-gradient(135deg,var(--gold),var(--accent));color:var(--white)}
+        .btn-outline{background:0;color:var(--accent);border:1.5px solid var(--accent)}
+        .btn-outline:hover{background:var(--accent);color:var(--white)}
+        .btn-sm{padding:9px 18px;font-size:.76rem}
+        .btn-danger{background:#f44336;color:#fff}
+        .btn:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
+
+        .hero-scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:5px;animation:fadeInUp .8s ease 1.2s both}
+        .hero-scroll span{color:rgba(255,255,255,.45);font-size:.6rem;letter-spacing:3px;text-transform:uppercase}
+        .scroll-line{width:1px;height:35px;background:rgba(255,255,255,.2);position:relative;overflow:hidden}
+        .scroll-line::after{content:'';position:absolute;top:-100%;width:100%;height:50%;background:var(--gold);animation:scrollD 2s ease infinite}
+        @keyframes scrollD{0%{top:-50%}100%{top:150%}}
+
+        .marquee-section{background:var(--dark);padding:12px 0;overflow:hidden}
+        .marquee-track{display:flex;animation:marquee 20s linear infinite;width:max-content}
+        .marquee-item{display:flex;align-items:center;gap:10px;padding:0 25px;white-space:nowrap}
+        .marquee-item span{font-family:'Playfair Display',serif;font-size:.8rem;color:var(--white);letter-spacing:1.5px}
+        .marquee-item .sep{width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+        .section{padding:55px 15px;position:relative}
+        .section-header{text-align:center;margin-bottom:35px}
+        .section-label{display:inline-flex;align-items:center;gap:8px;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+        .section-label::before,.section-label::after{content:'';width:18px;height:1px;background:var(--accent)}
+        .section-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--primary);line-height:1.2;margin-bottom:10px}
+        .section-title span{font-style:italic;color:var(--accent)}
+        .section-subtitle{font-size:.84rem;color:var(--text-light);max-width:500px;margin:0 auto;line-height:1.7;font-weight:300}
+
+        .features-section{background:var(--white)}
+        .features-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:12px}
+        .feature-card{text-align:center;padding:28px 18px;border-radius:18px;background:var(--cream);transition:all .4s;position:relative;overflow:hidden}
+        .feature-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),var(--accent));transform:scaleX(0);transition:transform .4s}
+        .feature-card:hover::before{transform:scaleX(1)}
+        .feature-card:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+        .feature-icon{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.3rem;color:var(--accent);background:linear-gradient(135deg,rgba(233,69,96,.08),rgba(212,165,116,.08));transition:all .3s}
+        .feature-card:hover .feature-icon{background:var(--accent);color:var(--white);transform:scale(1.1)}
+        .feature-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:6px;color:var(--primary)}
+        .feature-card p{color:var(--text-light);font-size:.8rem;line-height:1.6}
+
+        .products-section{background:var(--cream)}
+        .products-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+        .products-loading{grid-column:1/-1;text-align:center;padding:30px}
+        .spinner{width:35px;height:35px;border:3px solid rgba(233,69,96,.15);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 10px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .product-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:all .4s}
+        .product-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+        .product-image{position:relative;overflow:hidden;aspect-ratio:3/4}
+        .product-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+        .product-card:hover .product-image img{transform:scale(1.05)}
+        .product-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55));opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center;padding:15px}
+        .product-card:hover .product-overlay{opacity:1}
+        .product-actions{display:flex;gap:8px;transform:translateY(10px);transition:transform .3s ease .1s}
+        .product-card:hover .product-actions{transform:translateY(0)}
+        .p-action{width:40px;height:40px;border-radius:50%;border:0;display:flex;align-items:center;justify-content:center;font-size:.95rem;cursor:pointer;transition:all .3s;text-decoration:none}
+        .p-action.wa{background:var(--green);color:#fff}
+        .p-action.eye{background:rgba(255,255,255,.9);color:var(--primary)}
+        .p-action:hover{transform:scale(1.15)}
+        .product-badge{position:absolute;top:8px;left:8px;color:var(--white);padding:3px 10px;border-radius:20px;font-size:.58rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;z-index:2}
+        .product-wishlist{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.9);border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:all .3s;font-size:.8rem;color:var(--text-light)}
+        .product-wishlist:hover,.product-wishlist.active{color:var(--accent);transform:scale(1.1)}
+        .product-info{padding:10px}
+        .product-cat{font-size:.58rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);font-weight:600;margin-bottom:3px}
+        .product-name{font-family:'Playfair Display',serif;font-size:.88rem;font-weight:600;color:var(--primary);margin-bottom:5px;line-height:1.25}
+        .product-desc{font-size:.72rem;color:var(--text-light);line-height:1.5;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+        .product-btns{display:flex;flex-direction:column;gap:5px}
+        .p-btn{display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:var(--radius-full);font-size:.7rem;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;border:0;justify-content:center;width:100%;font-family:'Poppins',sans-serif}
+        .p-btn.order{background:var(--green);color:#fff}
+        .p-btn.order:hover{box-shadow:0 6px 18px rgba(37,211,102,.3);transform:translateY(-1px)}
+        .p-btn.inquire{background:0;color:var(--accent);border:1.5px solid var(--accent)}
+        .p-btn.inquire:hover{background:var(--accent);color:#fff}
+
+        .gallery-section{background:var(--primary);padding:55px 15px;position:relative;overflow:hidden}
+        .gallery-section .section-title{color:var(--white)}
+        .gallery-section .section-subtitle{color:rgba(255,255,255,.55)}
+        .gallery-section .section-label{color:var(--gold)}
+        .gallery-section .section-label::before,.gallery-section .section-label::after{background:var(--gold)}
+        .g-glow{position:absolute;width:300px;height:300px;border-radius:50%;filter:blur(120px);opacity:.08;pointer-events:none}
+        .g-glow.g1{background:var(--accent);top:-150px;right:-150px}
+        .g-glow.g2{background:var(--gold);bottom:-150px;left:-150px}
+        .gallery-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+        .gallery-item{border-radius:10px;overflow:hidden;position:relative;cursor:pointer;aspect-ratio:1}
+        .gallery-item:first-child{grid-column:span 2;aspect-ratio:16/9}
+        .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+        .gallery-item:hover img{transform:scale(1.08)}
+        .gallery-item-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.65));opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:12px}
+        .gallery-item:hover .gallery-item-ov{opacity:1}
+        .gallery-item-ov span{color:var(--white);font-family:'Playfair Display',serif;font-size:.85rem}
+
+        .testimonials-section{background:var(--white)}
+        .test-container{max-width:800px;margin:0 auto}
+        .test-card{text-align:center;padding:20px 12px;display:none}
+        .test-card.active{display:block;animation:fadeIn .5s ease}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+        .test-stars{color:var(--gold);margin-bottom:10px;font-size:.9rem;letter-spacing:3px}
+        .test-quote{font-size:2rem;color:var(--accent);font-family:'Playfair Display',serif;line-height:1;margin-bottom:8px}
+        .test-text{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--primary);line-height:1.7;margin-bottom:15px}
+        .test-author{font-weight:600;color:var(--primary);margin-bottom:2px;font-size:.9rem}
+        .test-role{font-size:.78rem;color:var(--text-light)}
+        .test-dots{display:flex;justify-content:center;gap:8px;margin-top:15px}
+        .test-dot{width:9px;height:9px;border-radius:50%;background:#ddd;cursor:pointer;transition:all .3s;border:0}
+        .test-dot.active{background:var(--accent);transform:scale(1.3)}
+
+        .newsletter-section{background:#fce4ec;padding:45px 15px;text-align:center}
+        .newsletter-box{max-width:500px;margin:0 auto}
+        .newsletter-box h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:6px;color:var(--primary)}
+        .newsletter-box p{font-size:.82rem;color:var(--text-light);margin-bottom:16px;line-height:1.6}
+        .nl-form{display:flex;flex-direction:column;gap:8px}
+        .nl-form input{padding:13px 18px;border-radius:var(--radius-full);border:2px solid rgba(212,165,116,.25);font-size:.85rem;outline:0;transition:border .3s;font-family:'Poppins',sans-serif;background:var(--white)}
+        .nl-form input:focus{border-color:var(--accent)}
+        .nl-form button{padding:13px;border-radius:var(--radius-full);background:var(--accent);color:#fff;font-size:.85rem;font-weight:600;border:0;cursor:pointer;transition:all .3s;font-family:'Poppins',sans-serif}
+        .nl-form button:hover{background:var(--accent2);transform:translateY(-2px)}
+
+        .contact-section{background:var(--cream)}
+        .contact-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:25px}
+        .contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+        .c-card{background:var(--white);border-radius:var(--radius);padding:14px;display:flex;align-items:center;gap:12px;transition:all .3s;text-decoration:none;color:inherit}
+        .c-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.06)}
+        .c-icon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+        .c-icon.wa{background:rgba(37,211,102,.1);color:var(--green)}
+        .c-icon.ig{background:rgba(228,64,95,.1);color:#E4405F}
+        .c-icon.tt{background:rgba(0,0,0,.06);color:#000}
+        .c-icon.fb{background:rgba(24,119,242,.1);color:#1877F2}
+        .c-card h4{font-size:.78rem;color:var(--primary);margin-bottom:1px}
+        .c-card p{font-size:.68rem;color:var(--text-light)}
+        .contact-form{background:var(--white);border-radius:var(--radius-lg);padding:22px 16px}
+        .contact-form h3{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:4px;color:var(--primary)}
+        .contact-form>p{font-size:.78rem;color:var(--text-light);margin-bottom:16px}
+        .form-group{margin-bottom:12px}
+        .form-group label{display:block;font-size:.75rem;font-weight:500;color:var(--text);margin-bottom:4px}
+        .form-group input,.form-group textarea,.form-group select{width:100%;padding:11px 14px;border:2px solid #eee;border-radius:10px;font-size:.84rem;font-family:'Poppins',sans-serif;outline:0;transition:border .3s;background:var(--cream)}
+        .form-group input:focus,.form-group textarea:focus{border-color:var(--accent)}
+        .form-group textarea{resize:vertical;min-height:80px}
+        .form-row{display:grid;grid-template-columns:1fr;gap:12px}
+
+        .cta-section{background:linear-gradient(135deg,#1a1a2e,#16213e 50%,#0f3460);padding:65px 15px;text-align:center;position:relative;overflow:hidden}
+        .cta-section::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(233,69,96,.08),transparent 50%),radial-gradient(circle at 70% 50%,rgba(212,165,116,.08),transparent 50%);animation:rotSlow 30s linear infinite}
+        @keyframes rotSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+        .cta-content{position:relative;z-index:2;max-width:650px;margin:0 auto}
+        .cta-content h2{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--white);margin-bottom:10px}
+        .cta-content h2 span{font-style:italic;color:var(--gold)}
+        .cta-content p{color:rgba(255,255,255,.65);font-size:.88rem;margin-bottom:25px;line-height:1.7}
+        .cta-btns{display:flex;flex-direction:column;gap:10px;align-items:center}
+
+        .instagram-section{padding:45px 0 0;text-align:center;background:var(--cream)}
+        .instagram-section .section-header{padding:0 15px}
+        .ig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
+        .ig-item{aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer}
+        .ig-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+        .ig-item:hover img{transform:scale(1.08)}
+        .ig-ov{position:absolute;inset:0;background:rgba(233,69,96,.65);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;text-decoration:none}
+        .ig-item:hover .ig-ov{opacity:1}
+        .ig-ov i{color:var(--white);font-size:1.3rem}
+
+        .footer{background:var(--dark);color:var(--white);padding:45px 15px 0}
+        .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:25px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.07)}
+        .footer-brand p{color:rgba(255,255,255,.45);font-size:.82rem;line-height:1.7;margin:12px 0 16px}
+        .footer-social{display:flex;gap:8px}
+        .footer-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--white);text-decoration:none;transition:all .3s;font-size:.85rem}
+        .footer-social a:hover{border-color:var(--accent);background:var(--accent);transform:translateY(-3px)}
+        .footer-col h4{font-family:'Playfair Display',serif;font-size:.95rem;margin-bottom:12px;padding-bottom:8px;position:relative}
+        .footer-col h4::after{content:'';position:absolute;bottom:0;left:0;width:22px;height:2px;background:var(--accent)}
+        .footer-col ul{list-style:none}
+        .footer-col ul li{margin-bottom:8px}
+        .footer-col ul li a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.8rem;transition:all .3s;display:flex;align-items:center;gap:5px}
+        .footer-col ul li a:hover{color:var(--white);padding-left:4px}
+        .footer-col ul li a i{font-size:.6rem;color:var(--accent)}
+        .footer-bottom{max-width:1200px;margin:0 auto;padding:16px 0;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+        .footer-bottom p{color:rgba(255,255,255,.25);font-size:.75rem}
+        .footer-bottom p a{color:var(--gold);text-decoration:none}
+        .admin-link{color:rgba(255,255,255,.08);text-decoration:none;font-size:.6rem;transition:color .3s}
+        .admin-link:hover{color:rgba(255,255,255,.3)}
+
+        .wa-float{position:fixed;bottom:18px;right:18px;z-index:9990;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+        .wa-tip{background:var(--white);color:var(--primary);padding:8px 14px;border-radius:10px;box-shadow:0 8px 25px rgba(0,0,0,.1);font-size:.78rem;font-weight:500;opacity:0;transform:translateX(15px);transition:all .3s;white-space:nowrap}
+        .wa-float:hover .wa-tip{opacity:1;transform:translateX(0)}
+        .wa-btn{width:52px;height:52px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-decoration:none;box-shadow:0 6px 22px rgba(37,211,102,.4);transition:all .3s;position:relative}
+        .wa-btn:hover{transform:scale(1.08)}
+        .wa-btn::before{content:'';position:absolute;inset:0;border-radius:50%;background:var(--green);animation:ping 1.5s ease infinite;z-index:-1}
+        @keyframes ping{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.5);opacity:0}}
+        .back-top{position:fixed;bottom:80px;right:24px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:var(--white);display:flex;align-items:center;justify-content:center;z-index:9989;opacity:0;visibility:hidden;transform:translateY(15px);transition:all .3s;font-size:.85rem;border:0;cursor:pointer}
+        .back-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+        .back-top:hover{background:var(--accent)}
+
+        .reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.35s}
+
+        .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);z-index:99998;display:none;align-items:center;justify-content:center;padding:15px}
+        .modal-bg.active{display:flex}
+        .modal{background:var(--white);border-radius:var(--radius-lg);width:100%;max-width:460px;max-height:90vh;overflow-y:auto;animation:modalIn .35s ease}
+        @keyframes modalIn{from{opacity:0;transform:scale(.92) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+        .modal-head{padding:16px 16px 0;display:flex;align-items:center;justify-content:space-between}
+        .modal-head h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--primary)}
+        .modal-x{width:32px;height:32px;border-radius:50%;background:var(--cream);border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;transition:all .3s}
+        .modal-x:hover{background:var(--accent);color:#fff}
+        .modal-body{padding:16px}
+        .modal-preview{display:flex;gap:10px;align-items:center;padding:10px;background:var(--cream);border-radius:10px;margin-bottom:15px}
+        .modal-preview img{width:50px;height:50px;border-radius:8px;object-fit:cover}
+        .modal-preview h4{font-size:.85rem;color:var(--primary);margin-bottom:1px}
+        .modal-preview p{font-size:.7rem;color:var(--text-light)}
+
+        .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:99999;display:none;align-items:center;justify-content:center}
+        .lightbox.active{display:flex}
+        .lightbox img{max-width:92%;max-height:88vh;object-fit:contain;border-radius:10px}
+        .lb-close{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:0;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+        .lb-close:hover{background:var(--accent)}
+
+        .toast-box{position:fixed;top:75px;right:12px;z-index:999999;display:flex;flex-direction:column;gap:6px}
+        .toast{background:var(--white);border-radius:10px;padding:12px 16px;box-shadow:0 10px 35px rgba(0,0,0,.12);display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:500;animation:toastIn .3s ease;max-width:300px;border-left:4px solid}
+        .toast.success{border-color:var(--green)}.toast.error{border-color:#f44336}.toast.info{border-color:#2196F3}
+        .toast.success i{color:var(--green)}.toast.error i{color:#f44336}.toast.info i{color:#2196F3}
+        @keyframes toastIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+
+        /* ADMIN */
+        .admin-bg{position:fixed;inset:0;background:var(--cream);z-index:99997;display:none;overflow-y:auto}
+        .admin-bg.active{display:block}
+        .admin-login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+        .admin-login-box{background:var(--white);border-radius:var(--radius-lg);padding:35px 25px;width:100%;max-width:400px;text-align:center;box-shadow:0 15px 50px rgba(0,0,0,.08)}
+        .admin-login-box img{width:65px;height:65px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin-bottom:12px}
+        .admin-login-box h2{font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:4px;color:var(--primary)}
+        .admin-login-box>p{font-size:.78rem;color:var(--text-light);margin-bottom:18px}
+        .admin-login-box .form-group{text-align:left;margin-bottom:14px}
+        .admin-login-box .form-group label{display:block;font-size:.75rem;font-weight:500;color:var(--text);margin-bottom:4px}
+        .admin-login-box .form-group input{width:100%;padding:12px 14px;border:2px solid #eee;border-radius:10px;font-size:.85rem;outline:0;transition:border .3s;font-family:'Poppins',sans-serif;background:var(--cream)}
+        .admin-login-box .form-group input:focus{border-color:var(--accent)}
+        .admin-login-error{color:#f44336;font-size:.78rem;margin-bottom:12px;display:none;padding:8px 12px;background:#ffebee;border-radius:8px}
+        .admin-login-error.show{display:block}
+
+        .admin-dash{display:none}.admin-dash.active{display:block}
+        .admin-top{background:var(--white);padding:10px 15px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.04);position:sticky;top:0;z-index:10}
+        .admin-top .logo{display:flex;align-items:center;gap:7px}
+        .admin-top .logo img{width:32px;height:32px;border-radius:50%;object-fit:cover}
+        .admin-top .logo span{font-family:'Playfair Display',serif;font-size:.88rem;font-weight:700;color:var(--primary)}
+        .admin-user-info{font-size:.68rem;color:var(--text-light);margin-left:8px;display:none}
+        .admin-top-btns{display:flex;gap:6px}
+        .admin-top-btns button{padding:7px 12px;border-radius:8px;border:0;cursor:pointer;font-size:.72rem;font-weight:600;transition:all .2s;font-family:'Poppins',sans-serif}
+        .admin-tabs{display:flex;gap:2px;padding:8px 12px;background:var(--white);border-bottom:1px solid #eee;overflow-x:auto;-webkit-overflow-scrolling:touch}
+        .admin-tabs button{padding:7px 12px;border-radius:6px;border:0;cursor:pointer;font-size:.7rem;font-weight:500;white-space:nowrap;transition:all .2s;font-family:'Poppins',sans-serif;background:0;color:var(--text-light)}
+        .admin-tabs button.active{background:var(--accent);color:#fff}
+        .admin-body{padding:12px;max-width:1200px;margin:0 auto}
+        .a-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:15px}
+        .a-stat{background:var(--white);border-radius:var(--radius);padding:14px;transition:all .3s}
+        .a-stat:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.06)}
+        .a-stat-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-bottom:8px}
+        .a-stat-num{font-size:1.3rem;font-weight:700;color:var(--primary)}
+        .a-stat-label{font-size:.65rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.8px}
+        .a-table-wrap{background:var(--white);border-radius:var(--radius);overflow:hidden;margin-bottom:15px}
+        .a-table-head{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;flex-wrap:wrap;gap:8px}
+        .a-table-head h3{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--primary)}
+        .a-table-scroll{width:100%;overflow-x:auto;display:block}
+        .a-table-scroll table{width:100%;border-collapse:collapse;min-width:450px}
+        .a-table-scroll th{text-align:left;padding:10px 12px;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text-light);background:var(--cream);border-bottom:1px solid #eee}
+        .a-table-scroll td{padding:10px 12px;font-size:.78rem;border-bottom:1px solid #f5f5f5}
+        .a-badge{padding:2px 8px;border-radius:15px;font-size:.62rem;font-weight:600;display:inline-block}
+        .a-badge.pending{background:#fff3e0;color:#e65100}.a-badge.confirmed{background:#e8f5e9;color:#2e7d32}.a-badge.completed{background:#e3f2fd;color:#1565c0}
+        .a-btn{padding:4px 8px;border-radius:5px;border:0;cursor:pointer;font-size:.68rem;transition:all .2s;margin-right:2px}
+        .a-btn.edit{background:#e3f2fd;color:#1565c0}.a-btn.del{background:#ffebee;color:#c62828}
+        .a-form{background:var(--white);border-radius:var(--radius);padding:16px;margin-bottom:15px}
+        .a-form h3{font-family:'Playfair Display',serif;font-size:.92rem;margin-bottom:12px;color:var(--primary)}
+        .a-empty{text-align:center;padding:30px 15px;color:var(--text-light);font-size:.82rem}
+
+        @media(min-width:768px){
+            .nav-logo img{width:52px;height:52px}.brand-name{font-size:1.15rem}
+            .hero h1{font-size:3.2rem}.hero p{font-size:1rem}
+            .hero-buttons{flex-direction:row}.btn{width:auto;max-width:none}
+            .section{padding:80px 20px}.section-title{font-size:2.2rem}
+            .features-grid{grid-template-columns:1fr 1fr;gap:18px}
+            .products-grid{gap:18px}.product-info{padding:15px}.product-name{font-size:1rem}
+            .product-desc{-webkit-line-clamp:3}.product-btns{flex-direction:row}.p-btn{width:auto}
+            .gallery-grid{gap:10px}.gallery-item{border-radius:14px}
+            .test-text{font-size:1.15rem}
+            .nl-form{flex-direction:row}.nl-form input{flex:1}.nl-form button{white-space:nowrap;padding:13px 25px}
+            .contact-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr 1fr}
+            .cta-content h2{font-size:2.3rem}.cta-btns{flex-direction:row}
+            .ig-grid{grid-template-columns:repeat(4,1fr)}
+            .footer-grid{grid-template-columns:2fr 1fr 1fr}.footer-bottom{flex-direction:row;justify-content:space-between;text-align:left}
+            .a-stats{grid-template-columns:repeat(4,1fr)}
+            .admin-user-info{display:inline}
+        }
+        @media(min-width:1024px){
+            .nav-links{display:flex}.menu-toggle{display:none}
+            .nav-logo img{width:58px;height:58px}.brand-name{font-size:1.25rem}
+            .hero h1{font-size:4.5rem}.hero p{font-size:1.1rem}
+            .section{padding:100px 20px}.section-title{font-size:2.8rem}
+            .features-grid{grid-template-columns:repeat(4,1fr);gap:22px}.feature-card{padding:40px 22px}
+            .products-grid{grid-template-columns:repeat(4,1fr);gap:22px}.product-info{padding:20px}.product-name{font-size:1.1rem}
+            .gallery-grid{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,240px);gap:12px}
+            .gallery-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}.gallery-item{aspect-ratio:auto}
+            .footer-grid{grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+            .cta-content h2{font-size:2.8rem}
+            .wa-btn{width:60px;height:60px;font-size:1.6rem}
+            .back-top{width:42px;height:42px;right:32px;bottom:100px}
+        }
+    </style>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+    <img src="https://i.imgur.com/XoNuPc2.jpeg" alt="Belleza" class="preloader-logo">
+    <div class="preloader-text">Belleza Store</div>
+    <div class="preloader-bar"></div>
+</div>
+
+<div class="toast-box" id="toastBox"></div>
+
+<div class="lightbox" id="lightbox">
+    <button class="lb-close" onclick="closeLB()"><i class="fas fa-times"></i></button>
+    <img src="" alt="" id="lbImg">
+</div>
+
+<div class="modal-bg" id="orderModal">
+    <div class="modal">
+        <div class="modal-head">
+            <h3 id="mTitle">Order via WhatsApp</h3>
+            <button class="modal-x" onclick="closeM()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-preview" id="mPreview">
+                <img src="" id="mImg"><div><h4 id="mName"></h4><p id="mCat"></p></div>
+            </div>
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <input type="hidden" id="oPid"><input type="hidden" id="oPname"><input type="hidden" id="oType" value="order">
+                <div class="form-group"><label>Your Name *</label><input type="text" id="oName" required placeholder="Full name"></div>
+                <div class="form-group"><label>Phone Number *</label><input type="tel" id="oPhone" required placeholder="07xx xxx xxx"></div>
+                <div class="form-group"><label>Message (optional)</label><textarea id="oMsg" rows="2" placeholder="Size, color, questions..."></textarea></div>
+                <button type="submit" class="btn btn-whatsapp" style="width:100%;max-width:100%">
+                    <i class="fab fa-whatsapp"></i><span id="mSubmit">Order via WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#home" class="nav-logo">
+            <img src="https://i.imgur.com/XoNuPc2.jpeg" alt="Belleza Store Style">
+            <div class="nav-logo-text"><span class="brand-name">Belleza Store</span><span class="brand-tagline">Style & Elegance</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#collection" class="nav-cta">Shop Now</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuBtn" onclick="toggleNav()"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="toggleNav()">Home</a>
+    <a href="#about" onclick="toggleNav()">About</a>
+    <a href="#collection" onclick="toggleNav()">Collection</a>
+    <a href="#gallery" onclick="toggleNav()">Gallery</a>
+    <a href="#reviews" onclick="toggleNav()">Reviews</a>
+    <a href="#contact" onclick="toggleNav()">Contact</a>
+    <a href="javascript:void(0)" onclick="toggleNav();openAdmin()" style="color:var(--gold)">⚙️ Admin</a>
+    <div class="mm-social">
+        <a href="https://www.tiktok.com/@Belleza_store" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/Belleza_store_style" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/Bellezastorestyle" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+</div>
+
+<main id="mainSite">
+
+<section class="hero" id="home">
+    <div class="hero-bg"><img src="https://i.imgur.com/fdQI2Ju.png" alt="Belleza Store Style"></div>
+    <div class="hero-overlay"></div>
+    <div class="particles" id="particles"></div>
+    <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span>New Collection 2025</div>
+        <h1>Discover Your <span>Belleza</span></h1>
+        <p>Where elegance meets contemporary fashion. Explore our curated collection designed to make you feel extraordinary.</p>
+        <div class="hero-buttons">
+            <a href="#collection" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop Collection</a>
+            <a href="https://wa.me/250788249054?text=Hello%20Belleza%20Store!%20I'm%20interested%20in%20your%20collection." target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat With Us</a>
+        </div>
+    </div>
+    <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="marquee-section"><div class="marquee-track">
+    <div class="marquee-item"><span>NEW ARRIVALS</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>PREMIUM QUALITY</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>ELEGANT DESIGNS</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>FREE CONSULTATION</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>BELLEZA STORE STYLE</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>TRENDING NOW</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>NEW ARRIVALS</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>PREMIUM QUALITY</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>ELEGANT DESIGNS</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>FREE CONSULTATION</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>BELLEZA STORE STYLE</span><div class="sep"></div></div>
+    <div class="marquee-item"><span>TRENDING NOW</span><div class="sep"></div></div>
+</div></div>
+
+<section class="section features-section" id="about">
+    <div class="section-header reveal"><div class="section-label">Why Choose Us</div><h2 class="section-title">The <span>Belleza</span> Experience</h2><p class="section-subtitle">We don't just sell fashion — we craft confidence. Every piece is selected with love.</p></div>
+    <div class="features-grid">
+        <div class="feature-card reveal reveal-d1"><div class="feature-icon"><i class="fas fa-gem"></i></div><h3>Premium Quality</h3><p>Each item is carefully curated for exceptional quality, ensuring you always look your best.</p></div>
+        <div class="feature-card reveal reveal-d2"><div class="feature-icon"><i class="fas fa-truck-fast"></i></div><h3>Fast Delivery</h3><p>Swift and reliable delivery right to your doorstep. Just a message away.</p></div>
+        <div class="feature-card reveal reveal-d3"><div class="feature-icon"><i class="fas fa-headset"></i></div><h3>Personal Styling</h3><p>Get personalized style advice via WhatsApp from our fashion experts.</p></div>
+        <div class="feature-card reveal reveal-d4"><div class="feature-icon"><i class="fas fa-heart"></i></div><h3>Made With Love</h3><p>Every collection is handpicked with passion to empower and inspire.</p></div>
+    </div>
+</section>
+
+<section class="section products-section" id="collection">
+    <div class="section-header reveal"><div class="section-label">Our Collection</div><h2 class="section-title">Trending <span>Styles</span></h2><p class="section-subtitle">From chic everyday wear to show-stopping statement pieces.</p></div>
+    <div class="products-grid" id="productsGrid">
+        <div class="products-loading" id="productsLoading"><div class="spinner"></div><p>Loading collection...</p></div>
+    </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+    <div class="g-glow g1"></div><div class="g-glow g2"></div>
+    <div class="section-header reveal"><div class="section-label">Lookbook</div><h2 class="section-title">Style <span>Gallery</span></h2><p class="section-subtitle">A visual journey through our fashion stories.</p></div>
+    <div class="gallery-grid">
+        <div class="gallery-item reveal" onclick="openLB('https://i.imgur.com/fdQI2Ju.png')"><img src="https://i.imgur.com/fdQI2Ju.png" alt="Featured" loading="lazy"><div class="gallery-item-ov"><span>Featured Look</span></div></div>
+        <div class="gallery-item reveal reveal-d1" onclick="openLB('https://i.imgur.com/2GU77Eg.jpeg')"><img src="https://i.imgur.com/2GU77Eg.jpeg" alt="Evening" loading="lazy"><div class="gallery-item-ov"><span>Evening Elegance</span></div></div>
+        <div class="gallery-item reveal reveal-d2" onclick="openLB('https://i.imgur.com/k3YoHjs.jpeg')"><img src="https://i.imgur.com/k3YoHjs.jpeg" alt="Casual" loading="lazy"><div class="gallery-item-ov"><span>Casual Chic</span></div></div>
+        <div class="gallery-item reveal reveal-d3" onclick="openLB('https://i.imgur.com/BGGxcbm.png')"><img src="https://i.imgur.com/BGGxcbm.png" alt="Luxury" loading="lazy"><div class="gallery-item-ov"><span>Luxury Line</span></div></div>
+        <div class="gallery-item reveal reveal-d4" onclick="openLB('https://i.imgur.com/eKE4WyD.png')"><img src="https://i.imgur.com/eKE4WyD.png" alt="Signature" loading="lazy"><div class="gallery-item-ov"><span>Signature Style</span></div></div>
+    </div>
+</section>
+
+<section class="section testimonials-section" id="reviews">
+    <div class="section-header reveal"><div class="section-label">Testimonials</div><h2 class="section-title">What Our <span>Clients</span> Say</h2></div>
+    <div class="test-container reveal" id="testContainer"></div>
+</section>
+
+<section class="newsletter-section reveal">
+    <div class="newsletter-box"><h3>Stay <span style="color:var(--accent)">Stylish</span></h3><p>Subscribe for exclusive offers and new arrivals.</p>
+    <form class="nl-form" onsubmit="subNL(event)"><input type="email" id="nlEmail" placeholder="Enter your email" required><button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button></form></div>
+</section>
+
+<section class="section contact-section" id="contact">
+    <div class="section-header reveal"><div class="section-label">Get In Touch</div><h2 class="section-title">Contact <span>Us</span></h2></div>
+    <div class="contact-grid">
+        <div class="contact-cards reveal">
+            <a href="https://wa.me/250788249054" target="_blank" class="c-card"><div class="c-icon wa"><i class="fab fa-whatsapp"></i></div><div><h4>WhatsApp</h4><p>+250 788 249 054</p></div></a>
+            <a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="c-card"><div class="c-icon ig"><i class="fab fa-instagram"></i></div><div><h4>Instagram</h4><p>@Belleza_store_style</p></div></a>
+            <a href="https://www.tiktok.com/@Belleza_store" target="_blank" class="c-card"><div class="c-icon tt"><i class="fab fa-tiktok"></i></div><div><h4>TikTok</h4><p>@Belleza_store</p></div></a>
+            <a href="https://www.facebook.com/Bellezastorestyle" target="_blank" class="c-card"><div class="c-icon fb"><i class="fab fa-facebook-f"></i></div><div><h4>Facebook</h4><p>Bellezastorestyle</p></div></a>
+        </div>
+        <div class="contact-form reveal">
+            <h3>Send Us a Message</h3><p>We'll reply via WhatsApp!</p>
+            <form onsubmit="subContact(event)">
+                <div class="form-row"><div class="form-group"><label>Name *</label><input type="text" id="cName" required placeholder="Full name"></div><div class="form-group"><label>Phone *</label><input type="tel" id="cPhone" required placeholder="07xx xxx xxx"></div></div>
+                <div class="form-group"><label>Email</label><input type="email" id="cEmail" placeholder="your@email.com"></div>
+                <div class="form-group"><label>Message *</label><textarea id="cMsg" required placeholder="How can we help?"></textarea></div>
+                <button type="submit" class="btn btn-primary" style="width:100%;max-width:100%"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-content reveal">
+        <h2>Ready to Find Your <span>Perfect Style?</span></h2>
+        <p>Reach out now and discover fashion that speaks to your personality.</p>
+        <div class="cta-btns">
+            <a href="https://wa.me/250788249054?text=Hello%20Belleza!%20I%20want%20to%20shop!" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="btn btn-secondary"><i class="fab fa-instagram"></i> Follow Us</a>
+        </div>
+    </div>
+</section>
+
+<section class="instagram-section">
+    <div class="section-header reveal"><div class="section-label">@Belleza_store_style</div><h2 class="section-title">Follow on <span>Instagram</span></h2></div>
+    <div class="ig-grid">
+        <div class="ig-item"><img src="https://i.imgur.com/2GU77Eg.jpeg" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
+        <div class="ig-item"><img src="https://i.imgur.com/k3YoHjs.jpeg" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
+        <div class="ig-item"><img src="https://i.imgur.com/BGGxcbm.png" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
+        <div class="ig-item"><img src="https://i.imgur.com/eKE4WyD.png" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <a href="#" class="nav-logo"><img src="https://i.imgur.com/XoNuPc2.jpeg" alt="Belleza"><div class="nav-logo-text"><span class="brand-name">Belleza Store</span><span class="brand-tagline">Style & Elegance</span></div></a>
+            <p>Your premier destination for contemporary fashion that empowers and inspires.</p>
+            <div class="footer-social">
+                <a href="https://www.tiktok.com/@Belleza_store" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/Belleza_store_style" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/Bellezastorestyle" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/250788249054" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li><li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li><li><a href="#collection"><i class="fas fa-chevron-right"></i> Collection</a></li><li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li><li><a href="#reviews"><i class="fas fa-chevron-right"></i> Reviews</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul><li><a href="https://wa.me/250788249054" target="_blank"><i class="fab fa-whatsapp"></i> +250 788 249 054</a></li><li><a href="https://www.instagram.com/Belleza_store_style" target="_blank"><i class="fab fa-instagram"></i> @Belleza_store_style</a></li><li><a href="https://www.tiktok.com/@Belleza_store" target="_blank"><i class="fab fa-tiktok"></i> @Belleza_store</a></li><li><a href="https://www.facebook.com/Bellezastorestyle" target="_blank"><i class="fab fa-facebook-f"></i> Bellezastorestyle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 <a href="#">Belleza Store Style</a>. All rights reserved. <i class="fas fa-heart" style="color:var(--accent)"></i></p>
+        <a href="javascript:void(0)" onclick="openAdmin()" class="admin-link"><i class="fas fa-lock"></i> Admin</a>
+    </div>
+</footer>
+</main>
+
+<div class="wa-float" id="waFloat">
+    <div class="wa-tip">Chat with us! 💬</div>
+    <a href="https://wa.me/250788249054?text=Hello%20Belleza%20Store%20Style!" target="_blank" class="wa-btn"><i class="fab fa-whatsapp"></i></a>
+</div>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ===== ADMIN PANEL ===== -->
+<div class="admin-bg" id="adminBg">
+    <div class="admin-login" id="adminLogin">
+        <div class="admin-login-box">
+            <img src="https://i.imgur.com/XoNuPc2.jpeg" alt="Belleza">
+            <h2>Admin Panel</h2>
+            <p>Sign in with your admin credentials</p>
+            <div class="admin-login-error" id="loginError"></div>
+            <form onsubmit="adminLoginGo(event)" id="adminLoginForm">
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="adminEmail" placeholder="admin@belleza.com" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="adminPass" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="loginBtn" style="width:100%;max-width:100%">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+            </form>
+            <button onclick="closeAdmin()" class="btn btn-sm btn-outline" style="margin-top:12px;width:100%;max-width:100%">
+                <i class="fas fa-arrow-left"></i> Back to Site
+            </button>
+        </div>
+    </div>
+    <div class="admin-dash" id="adminDash">
+        <div class="admin-top">
+            <div class="logo">
+                <img src="https://i.imgur.com/XoNuPc2.jpeg" alt="">
+                <span>Belleza Admin</span>
+                <span class="admin-user-info" id="adminUserEmail"></span>
+            </div>
+            <div class="admin-top-btns">
+                <button onclick="closeAdmin()" style="background:var(--cream);color:var(--text)"><i class="fas fa-external-link-alt"></i> Site</button>
+                <button onclick="adminOut()" style="background:#ffebee;color:#c62828"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+        <div class="admin-tabs" id="adminTabs">
+            <button class="active" data-tab="dashboard" onclick="adminTab('dashboard',this)"><i class="fas fa-chart-pie"></i> Dashboard</button>
+            <button data-tab="products" onclick="adminTab('products',this)"><i class="fas fa-shopping-bag"></i> Products</button>
+            <button data-tab="orders" onclick="adminTab('orders',this)"><i class="fas fa-receipt"></i> Orders</button>
+            <button data-tab="subs" onclick="adminTab('subs',this)"><i class="fas fa-envelope"></i> Subscribers</button>
+            <button data-tab="msgs" onclick="adminTab('msgs',this)"><i class="fas fa-comment"></i> Messages</button>
+            <button data-tab="tests" onclick="adminTab('tests',this)"><i class="fas fa-star"></i> Reviews</button>
+        </div>
+        <div class="admin-body" id="adminBody"></div>
+    </div>
+</div>
+
+<script>
+const SB_URL='https://gwcoxztfhsemzqlxqyfx.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3Y294enRmaHNlbXpxbHhxeWZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MjUyOTcsImV4cCI6MjA4OTIwMTI5N30.okKGILHrCTXWx2TO17rpSWyfi-hN5uyPerLPchuDYTU';
+const WA='250788249054';
+let sb=null, dbReady=false, adminUser=null;
+
+const FALLBACK_PRODUCTS=[
+    {id:'f1',name:'Elegant Evening Collection',category:'Evening Wear',description:'Stunning evening wear designed to make every moment unforgettable. Perfect for galas and special events.',image_url:'https://i.imgur.com/2GU77Eg.jpeg',badge:'New In',badge_color:'#e94560'},
+    {id:'f2',name:'Chic Casual Ensemble',category:'Casual Chic',description:'Effortlessly stylish casual wear that transitions seamlessly from day to night with absolute grace.',image_url:'https://i.imgur.com/k3YoHjs.jpeg',badge:'Trending',badge_color:'#d4a574'},
+    {id:'f3',name:'Luxury Statement Piece',category:'Luxury',description:'Bold, luxurious fashion that commands attention. A statement piece for the modern fashionista.',image_url:'https://i.imgur.com/BGGxcbm.png',badge:'Exclusive',badge_color:'#c2185b'},
+    {id:'f4',name:'Signature Belleza Style',category:'Signature',description:'Our signature collection — timeless elegance crafted for the woman who knows her worth.',image_url:'https://i.imgur.com/eKE4WyD.png',badge:'Best Seller',badge_color:'#e94560'}
+];
+const FALLBACK_TESTS=[
+    {author_name:'Aline Mukamana',author_role:'Fashion Enthusiast',content:'Belleza Store Style completely transformed my wardrobe! The quality is outstanding and WhatsApp service is incredible.',rating:5},
+    {author_name:'Grace Uwimana',author_role:'Loyal Customer',content:'Every piece from Belleza has been absolutely stunning. The attention to detail and quality is unmatched.',rating:5},
+    {author_name:'Diane Ishimwe',author_role:'Happy Client',content:'I found my perfect outfit at Belleza Store. Ordering via WhatsApp was so convenient and delivery was fast!',rating:5}
+];
+
+let allProducts=[],allTests=[],curTest=0,testInterval=null;
+
+function hidePreloader(){document.getElementById('preloader').classList.add('hidden')}
+setTimeout(hidePreloader,3000);
+
+function initApp(){
+    try{
+        if(window.supabase&&window.supabase.createClient){
+            sb=window.supabase.createClient(SB_URL,SB_KEY);
+            dbReady=true;
+            console.log('Supabase connected');
+            checkExistingSession();
+        }
+    }catch(e){console.warn('Supabase init failed:',e)}
+    loadProducts();loadTests();trackVisit();
+    setTimeout(hidePreloader,800);
+}
+
+if(document.readyState==='complete'||document.readyState==='interactive')setTimeout(initApp,100);
+document.addEventListener('DOMContentLoaded',function(){setTimeout(initApp,100)});
+window.addEventListener('load',function(){setTimeout(initApp,200)});
+
+function toast(msg,type='success'){
+    const c=document.getElementById('toastBox');
+    const icons={success:'fa-check-circle',error:'fa-exclamation-circle',info:'fa-info-circle'};
+    const t=document.createElement('div');
+    t.className='toast '+type;
+    t.innerHTML='<i class="fas '+icons[type]+'"></i><span>'+msg+'</span>';
+    c.appendChild(t);
+    setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),300)},3500);
+}
+function fmtDate(d){return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}
+
+async function trackVisit(){if(!sb)return;try{await sb.from('belleza_visitors').insert({page:'/',referrer:document.referrer||'direct'})}catch(e){}}
+
+// NAV
+window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').classList.toggle('scrolled',scrollY>50);
+    document.getElementById('backTop').classList.toggle('visible',scrollY>400);
+    document.querySelectorAll('section[id]').forEach(s=>{
+        const t=s.offsetTop-180;
+        if(scrollY>=t&&scrollY<t+s.offsetHeight){
+            document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+            const l=document.querySelector('.nav-links a[href="#'+s.id+'"]');
+            if(l)l.classList.add('active');
+        }
+    });
+});
+function toggleNav(){
+    document.getElementById('menuBtn').classList.toggle('active');
+    document.getElementById('mobileMenu').classList.toggle('active');
+    document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('active')?'hidden':'';
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}});
+});
+(function(){const c=document.getElementById('particles');for(let i=0;i<20;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(Math.random()*3+1.5)+'px';p.style.animationDuration=(Math.random()*12+6)+'s';p.style.animationDelay=Math.random()*8+'s';c.appendChild(p)}})();
+const revObs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+// PRODUCTS
+async function loadProducts(){
+    const grid=document.getElementById('productsGrid');
+    if(sb){try{const{data,error}=await sb.from('belleza_products').select('*').eq('is_active',true).order('sort_order',{ascending:true});if(!error&&data&&data.length>0){allProducts=data;renderProducts(grid);return}}catch(e){}}
+    allProducts=FALLBACK_PRODUCTS;renderProducts(grid);
+}
+function renderProducts(grid){
+    grid.innerHTML=allProducts.map((p,i)=>`
+        <div class="product-card reveal reveal-d${(i%4)+1}">
+            <div class="product-image">
+                <img src="${p.image_url}" alt="${p.name}" loading="lazy">
+                ${p.badge?`<span class="product-badge" style="background:${p.badge_color||'#e94560'}">${p.badge}</span>`:''}
+                <button class="product-wishlist" onclick="toggleWL(this)"><i class="far fa-heart"></i></button>
+                <div class="product-overlay"><div class="product-actions">
+                    <button class="p-action wa" onclick="openOrder('${p.id}','order')"><i class="fab fa-whatsapp"></i></button>
+                    <button class="p-action eye" onclick="openLB('${p.image_url}')"><i class="fas fa-eye"></i></button>
+                </div></div>
+            </div>
+            <div class="product-info">
+                <div class="product-cat">${p.category||'Fashion'}</div>
+                <h3 class="product-name">${p.name}</h3>
+                <p class="product-desc">${p.description||''}</p>
+                <div class="product-btns">
+                    <button class="p-btn order" onclick="openOrder('${p.id}','order')"><i class="fab fa-whatsapp"></i> Order Now</button>
+                    <button class="p-btn inquire" onclick="openOrder('${p.id}','inquiry')"><i class="fas fa-info-circle"></i> Inquire</button>
+                </div>
+            </div>
+        </div>`).join('');
+    grid.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+}
+
+// ORDER MODAL
+function openOrder(pid,type){
+    const p=allProducts.find(x=>x.id===pid);if(!p)return;
+    document.getElementById('oPid').value=p.id;document.getElementById('oPname').value=p.name;document.getElementById('oType').value=type;
+    document.getElementById('mImg').src=p.image_url;document.getElementById('mName').textContent=p.name;document.getElementById('mCat').textContent=p.category||'Fashion';
+    document.getElementById('mTitle').textContent=type==='order'?'Order via WhatsApp':'Inquire About This Item';
+    document.getElementById('mSubmit').textContent=type==='order'?'Order via WhatsApp':'Inquire via WhatsApp';
+    document.getElementById('orderModal').classList.add('active');document.body.style.overflow='hidden';
+}
+function closeM(){document.getElementById('orderModal').classList.remove('active');document.body.style.overflow=''}
+async function submitOrder(e){
+    e.preventDefault();
+    const name=document.getElementById('oName').value.trim(),phone=document.getElementById('oPhone').value.trim(),msg=document.getElementById('oMsg').value.trim(),pname=document.getElementById('oPname').value,pid=document.getElementById('oPid').value,type=document.getElementById('oType').value;
+    if(sb){try{await sb.from('belleza_orders').insert({customer_name:name,customer_phone:phone,product_name:pname,product_id:pid.startsWith('f')?null:pid,order_type:type,message:msg,status:'pending'})}catch(e){}}
+    toast((type==='order'?'Order':'Inquiry')+' sent!');
+    const label=type==='order'?'🛍️ NEW ORDER':'❓ INQUIRY';
+    const waMsg=encodeURIComponent(label+'\n\nProduct: '+pname+'\nName: '+name+'\nPhone: '+phone+(msg?'\nMessage: '+msg:'')+'\n\nFrom Belleza Store Website');
+    closeM();document.getElementById('orderForm').reset();
+    window.open('https://wa.me/'+WA+'?text='+waMsg,'_blank');
+}
+function toggleWL(b){
+    b.classList.toggle('active');const i=b.querySelector('i');
+    if(b.classList.contains('active')){i.className='fas fa-heart';b.style.transform='scale(1.3)';setTimeout(()=>b.style.transform='',300);toast('Added to wishlist ❤️','info')}else{i.className='far fa-heart'}
+}
+
+// TESTIMONIALS
+async function loadTests(){
+    const c=document.getElementById('testContainer');
+    if(sb){try{const{data,error}=await sb.from('belleza_testimonials').select('*').eq('is_active',true).order('created_at',{ascending:false});if(!error&&data&&data.length>0){allTests=data;renderTests(c);return}}catch(e){}}
+    allTests=FALLBACK_TESTS;renderTests(c);
+}
+function renderTests(c){
+    if(!allTests.length){c.innerHTML='<p style="text-align:center;color:var(--text-light)">No reviews yet.</p>';return}
+    c.innerHTML=allTests.map((t,i)=>`<div class="test-card ${i===0?'active':''}" data-i="${i}"><div class="test-stars">${'★ '.repeat(t.rating||5)}</div><div class="test-quote">"</div><p class="test-text">${t.content}</p><p class="test-author">${t.author_name}</p><p class="test-role">${t.author_role||'Customer'}</p></div>`).join('')+'<div class="test-dots">'+allTests.map((_,i)=>'<button class="test-dot '+(i===0?'active':'')+'" onclick="showTest('+i+')"></button>').join('')+'</div>';
+    if(testInterval)clearInterval(testInterval);
+    testInterval=setInterval(()=>{curTest=(curTest+1)%allTests.length;showTest(curTest)},5000);
+}
+function showTest(i){
+    document.querySelectorAll('.test-card').forEach(c=>c.classList.remove('active'));
+    document.querySelectorAll('.test-dot').forEach(d=>d.classList.remove('active'));
+    const card=document.querySelector('.test-card[data-i="'+i+'"]'),dots=document.querySelectorAll('.test-dot');
+    if(card)card.classList.add('active');if(dots[i])dots[i].classList.add('active');curTest=i;
+}
+
+// NEWSLETTER
+async function subNL(e){
+    e.preventDefault();const email=document.getElementById('nlEmail').value.trim();
+    if(sb){try{const{error}=await sb.from('belleza_subscribers').insert({email});if(error&&error.code==='23505'){toast("Already subscribed! 💕",'info');return}if(error)throw error}catch(e){}}
+    toast('Subscribed! Welcome! 🎉');document.getElementById('nlEmail').value='';
+}
+
+// CONTACT
+async function subContact(e){
+    e.preventDefault();const name=document.getElementById('cName').value.trim(),phone=document.getElementById('cPhone').value.trim(),email=document.getElementById('cEmail').value.trim(),msg=document.getElementById('cMsg').value.trim();
+    if(sb){try{await sb.from('belleza_contacts').insert({name,phone,email,message:msg})}catch(e){}}
+    toast('Message sent! We\'ll reply soon! 💌');e.target.reset();
+}
+
+// LIGHTBOX
+function openLB(src){document.getElementById('lbImg').src=src;document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
+function closeLB(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox'))closeLB()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
+
+// ========================================
+// ADMIN - SUPABASE AUTH (EMAIL + PASSWORD)
+// ========================================
+
+async function checkExistingSession(){
+    if(!sb)return;
+    try{
+        const{data:{session}}=await sb.auth.getSession();
+        if(session&&session.user){
+            adminUser=session.user;
+            console.log('Existing session found:',adminUser.email);
+        }
+    }catch(e){console.warn('Session check failed:',e)}
+}
+
+function openAdmin(){
+    document.getElementById('adminBg').classList.add('active');
+    document.getElementById('waFloat').style.display='none';
+    document.body.style.overflow='hidden';
+    hideLoginError();
+    if(adminUser){
+        showDash();
+    }else{
+        document.getElementById('adminLogin').style.display='';
+        document.getElementById('adminDash').classList.remove('active');
+    }
+}
+
+function closeAdmin(){
+    document.getElementById('adminBg').classList.remove('active');
+    document.getElementById('waFloat').style.display='';
+    document.body.style.overflow='';
+}
+
+function showLoginError(msg){
+    const el=document.getElementById('loginError');
+    el.textContent=msg;el.classList.add('show');
+}
+function hideLoginError(){
+    document.getElementById('loginError').classList.remove('show');
+}
+
+async function adminLoginGo(e){
+    e.preventDefault();
+    hideLoginError();
+
+    const email=document.getElementById('adminEmail').value.trim();
+    const password=document.getElementById('adminPass').value;
+    const loginBtn=document.getElementById('loginBtn');
+
+    if(!sb){
+        showLoginError('Database connection not available. Please try again later.');
+        return;
+    }
+
+    // Disable button while loading
+    loginBtn.disabled=true;
+    loginBtn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Signing in...';
+
+    try{
+        const{data,error}=await sb.auth.signInWithPassword({email,password});
+
+        if(error){
+            console.error('Login error:',error.message);
+            if(error.message.includes('Invalid login')){
+                showLoginError('Invalid email or password. Please try again.');
+            }else if(error.message.includes('Email not confirmed')){
+                showLoginError('Email not confirmed. Please check your inbox.');
+            }else{
+                showLoginError(error.message);
+            }
+            loginBtn.disabled=false;
+            loginBtn.innerHTML='<i class="fas fa-sign-in-alt"></i> Sign In';
+            return;
+        }
+
+        if(data&&data.user){
+            adminUser=data.user;
+            toast('Welcome, '+adminUser.email+'! 🎉');
+            showDash();
+            document.getElementById('adminLoginForm').reset();
+        }
+    }catch(err){
+        console.error('Login exception:',err);
+        showLoginError('Connection error. Please check your internet and try again.');
+    }
+
+    loginBtn.disabled=false;
+    loginBtn.innerHTML='<i class="fas fa-sign-in-alt"></i> Sign In';
+}
+
+async function adminOut(){
+    if(sb){
+        try{await sb.auth.signOut()}catch(e){console.warn('Signout error:',e)}
+    }
+    adminUser=null;
+    document.getElementById('adminLogin').style.display='';
+    document.getElementById('adminDash').classList.remove('active');
+    toast('Signed out successfully','info');
+}
+
+function showDash(){
+    document.getElementById('adminLogin').style.display='none';
+    document.getElementById('adminDash').classList.add('active');
+    // Show logged in email
+    const emailEl=document.getElementById('adminUserEmail');
+    if(emailEl&&adminUser){emailEl.textContent='('+adminUser.email+')'}
+    adminTab('dashboard',document.querySelector('[data-tab="dashboard"]'));
+}
+
+function adminTab(tab,btn){
+    document.querySelectorAll('#adminTabs button').forEach(b=>b.classList.remove('active'));
+    if(btn)btn.classList.add('active');
+    const body=document.getElementById('adminBody');
+    body.innerHTML='<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
+    switch(tab){
+        case'dashboard':renderADash();break;
+        case'products':renderAProducts();break;
+        case'orders':renderAOrders();break;
+        case'subs':renderASubs();break;
+        case'msgs':renderAMsgs();break;
+        case'tests':renderATests();break;
+    }
+}
+
+async function renderADash(){
+    let pc=0,oc=0,sc=0,mc=0,recent=[];
+    if(sb){try{
+        const[p,o,s,m]=await Promise.all([
+            sb.from('belleza_products').select('id',{count:'exact',head:true}),
+            sb.from('belleza_orders').select('id',{count:'exact',head:true}),
+            sb.from('belleza_subscribers').select('id',{count:'exact',head:true}),
+            sb.from('belleza_contacts').select('id',{count:'exact',head:true})
+        ]);
+        pc=p.count||0;oc=o.count||0;sc=s.count||0;mc=m.count||0;
+        const r=await sb.from('belleza_orders').select('*').order('created_at',{ascending:false}).limit(5);
+        recent=r.data||[];
+    }catch(e){}}
+    document.getElementById('adminBody').innerHTML=`
+        <div class="a-stats">
+            <div class="a-stat"><div class="a-stat-icon" style="background:rgba(233,69,96,.1);color:var(--accent)"><i class="fas fa-shopping-bag"></i></div><div class="a-stat-num">${pc}</div><div class="a-stat-label">Products</div></div>
+            <div class="a-stat"><div class="a-stat-icon" style="background:rgba(37,211,102,.1);color:#25D366"><i class="fas fa-receipt"></i></div><div class="a-stat-num">${oc}</div><div class="a-stat-label">Orders</div></div>
+            <div class="a-stat"><div class="a-stat-icon" style="background:rgba(33,150,243,.1);color:#2196F3"><i class="fas fa-envelope"></i></div><div class="a-stat-num">${sc}</div><div class="a-stat-label">Subscribers</div></div>
+            <div class="a-stat"><div class="a-stat-icon" style="background:rgba(255,152,0,.1);color:#ff9800"><i class="fas fa-comment"></i></div><div class="a-stat-num">${mc}</div><div class="a-stat-label">Messages</div></div>
+        </div>
+        <div class="a-table-wrap"><div class="a-table-head"><h3>Recent Orders</h3></div><div class="a-table-scroll"><table>
+            <thead><tr><th>Customer</th><th>Product</th><th>Type</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody>${recent.map(o=>'<tr><td><strong>'+o.customer_name+'</strong><br><small style="color:var(--text-light)">'+o.customer_phone+'</small></td><td>'+(o.product_name||'-')+'</td><td><span class="a-badge '+(o.order_type==='order'?'confirmed':'pending')+'">'+o.order_type+'</span></td><td><span class="a-badge '+o.status+'">'+o.status+'</span></td><td><small>'+fmtDate(o.created_at)+'</small></td></tr>').join('')||'<tr><td colspan="5" class="a-empty">No orders yet</td></tr>'}</tbody>
+        </table></div></div>`;
+}
+
+async function renderAProducts(){
+    let data=[];if(sb){try{const r=await sb.from('belleza_products').select('*').order('sort_order');data=r.data||[]}catch(e){}}
+    document.getElementById('adminBody').innerHTML=`
+        <div class="a-form"><h3 id="pFormTitle">➕ Add Product</h3>
+        <form onsubmit="saveAProd(event)"><input type="hidden" id="epId">
+            <div class="form-row"><div class="form-group"><label>Name *</label><input type="text" id="apName" required placeholder="Product name"></div><div class="form-group"><label>Category</label><input type="text" id="apCat" placeholder="e.g. Evening Wear"></div></div>
+            <div class="form-group"><label>Description</label><textarea id="apDesc" rows="2" placeholder="Description"></textarea></div>
+            <div class="form-row"><div class="form-group"><label>Image URL *</label><input type="url" id="apImg" required placeholder="https://i.imgur.com/..."></div><div class="form-group"><label>Price</label><input type="text" id="apPrice" placeholder="Contact for Price"></div></div>
+            <div class="form-row"><div class="form-group"><label>Badge</label><input type="text" id="apBadge" placeholder="New, Trending"></div><div class="form-group"><label>Badge Color</label><input type="color" id="apColor" value="#e94560" style="height:40px"></div></div>
+            <div class="form-row"><div class="form-group"><label>Sort Order</label><input type="number" id="apSort" value="0" min="0"></div><div class="form-group" style="display:flex;align-items:flex-end"><button type="submit" class="btn btn-primary btn-sm" style="width:100%;max-width:100%"><i class="fas fa-save"></i> Save</button></div></div>
+        </form></div>
+        <div class="a-table-wrap"><div class="a-table-head"><h3>Products (${data.length})</h3></div><div class="a-table-scroll"><table>
+            <thead><tr><th>Img</th><th>Name</th><th>Category</th><th>Badge</th><th>Actions</th></tr></thead>
+            <tbody>${data.map(p=>'<tr><td><img src="'+p.image_url+'" style="width:40px;height:40px;border-radius:6px;object-fit:cover"></td><td><strong>'+p.name+'</strong></td><td>'+(p.category||'-')+'</td><td>'+(p.badge?'<span class="a-badge" style="background:'+p.badge_color+';color:#fff">'+p.badge+'</span>':'-')+'</td><td><button class="a-btn edit" onclick=\'editAProd('+JSON.stringify(p).replace(/'/g,"&#39;")+')\'>✏️</button><button class="a-btn del" onclick="delAProd(\''+p.id+'\')">🗑️</button></td></tr>').join('')||'<tr><td colspan="5" class="a-empty">No products</td></tr>'}</tbody>
+        </table></div></div>`;
+}
+async function saveAProd(e){
+    e.preventDefault();if(!sb){toast('Database not connected','error');return}
+    const id=document.getElementById('epId').value;
+    const p={name:document.getElementById('apName').value.trim(),category:document.getElementById('apCat').value.trim(),description:document.getElementById('apDesc').value.trim(),image_url:document.getElementById('apImg').value.trim(),price:document.getElementById('apPrice').value.trim()||'Contact for Price',badge:document.getElementById('apBadge').value.trim(),badge_color:document.getElementById('apColor').value,sort_order:parseInt(document.getElementById('apSort').value)||0,is_active:true};
+    try{if(id){await sb.from('belleza_products').update(p).eq('id',id);toast('Updated!')}else{await sb.from('belleza_products').insert(p);toast('Added!')}renderAProducts();loadProducts()}catch(e){toast('Error: '+e.message,'error')}
+}
+function editAProd(p){document.getElementById('epId').value=p.id;document.getElementById('apName').value=p.name;document.getElementById('apCat').value=p.category||'';document.getElementById('apDesc').value=p.description||'';document.getElementById('apImg').value=p.image_url||'';document.getElementById('apPrice').value=p.price||'';document.getElementById('apBadge').value=p.badge||'';document.getElementById('apColor').value=p.badge_color||'#e94560';document.getElementById('apSort').value=p.sort_order||0;document.getElementById('pFormTitle').textContent='✏️ Edit Product';window.scrollTo({top:0,behavior:'smooth'})}
+async function delAProd(id){if(!confirm('Delete this product?'))return;try{await sb.from('belleza_products').delete().eq('id',id);toast('Deleted');renderAProducts();loadProducts()}catch(e){toast('Error','error')}}
+
+async function renderAOrders(){
+    let data=[];if(sb){try{const r=await sb.from('belleza_orders').select('*').order('created_at',{ascending:false});data=r.data||[]}catch(e){}}
+    document.getElementById('adminBody').innerHTML=`<div class="a-table-wrap"><div class="a-table-head"><h3>Orders & Inquiries (${data.length})</h3></div><div class="a-table-scroll"><table>
+        <thead><tr><th>Customer</th><th>Phone</th><th>Product</th><th>Type</th><th>Status</th><th>Date</th><th>Act</th></tr></thead>
+        <tbody>${data.map(o=>'<tr><td><strong>'+o.customer_name+'</strong></td><td><a href="https://wa.me/'+(o.customer_phone||'').replace(/\D/g,'')+'" target="_blank" style="color:#25D366">'+o.customer_phone+'</a></td><td>'+(o.product_name||'-')+'</td><td><span class="a-badge '+(o.order_type==='order'?'confirmed':'pending')+'">'+o.order_type+'</span></td><td><select onchange="updOrd(\''+o.id+'\',this.value)" style="padding:3px 6px;border-radius:5px;border:1px solid #ddd;font-size:.7rem"><option value="pending" '+(o.status==='pending'?'selected':'')+'>Pending</option><option value="confirmed" '+(o.status==='confirmed'?'selected':'')+'>Confirmed</option><option value="completed" '+(o.status==='completed'?'selected':'')+'>Completed</option></select></td><td><small>'+fmtDate(o.created_at)+'</small></td><td><button class="a-btn del" onclick="delOrd(\''+o.id+'\')">🗑️</button></td></tr>').join('')||'<tr><td colspan="7" class="a-empty">No orders yet</td></tr>'}</tbody>
+    </table></div></div>`;
+}
+async function updOrd(id,s){if(sb){try{await sb.from('belleza_orders').update({status:s}).eq('id',id);toast('Updated','info')}catch(e){}}}
+async function delOrd(id){if(!confirm('Delete?'))return;try{await sb.from('belleza_orders').delete().eq('id',id);toast('Deleted');renderAOrders()}catch(e){}}
+
+async function renderASubs(){
+    let data=[];if(sb){try{const r=await sb.from('belleza_subscribers').select('*').order('subscribed_at',{ascending:false});data=r.data||[]}catch(e){}}
+    document.getElementById('adminBody').innerHTML=`<div class="a-table-wrap"><div class="a-table-head"><h3>Subscribers (${data.length})</h3></div><div class="a-table-scroll"><table>
+        <thead><tr><th>Email</th><th>Date</th><th>Act</th></tr></thead>
+        <tbody>${data.map(s=>'<tr><td><strong>'+s.email+'</strong></td><td><small>'+fmtDate(s.subscribed_at)+'</small></td><td><button class="a-btn del" onclick="delSub(\''+s.id+'\')">🗑️</button></td></tr>').join('')||'<tr><td colspan="3" class="a-empty">No subscribers yet</td></tr>'}</tbody>
+    </table></div></div>`;
+}
+async function delSub(id){if(!confirm('Remove?'))return;try{await sb.from('belleza_subscribers').delete().eq('id',id);toast('Removed');renderASubs()}catch(e){}}
+
+async function renderAMsgs(){
+    let data=[];if(sb){try{const r=await sb.from('belleza_contacts').select('*').order('created_at',{ascending:false});data=r.data||[]}catch(e){}}
+    document.getElementById('adminBody').innerHTML=`<div class="a-table-wrap"><div class="a-table-head"><h3>Messages (${data.length})</h3></div><div class="a-table-scroll"><table>
+        <thead><tr><th>Name</th><th>Phone</th><th>Message</th><th>Date</th><th>Act</th></tr></thead>
+        <tbody>${data.map(m=>'<tr><td><strong>'+m.name+'</strong></td><td><a href="https://wa.me/'+(m.phone||'').replace(/\D/g,'')+'" target="_blank" style="color:#25D366">'+(m.phone||'-')+'</a></td><td style="max-width:180px"><small>'+m.message+'</small></td><td><small>'+fmtDate(m.created_at)+'</small></td><td><button class="a-btn del" onclick="delMsg(\''+m.id+'\')">🗑️</button></td></tr>').join('')||'<tr><td colspan="5" class="a-empty">No messages yet</td></tr>'}</tbody>
+    </table></div></div>`;
+}
+async function delMsg(id){if(!confirm('Delete?'))return;try{await sb.from('belleza_contacts').delete().eq('id',id);toast('Deleted');renderAMsgs()}catch(e){}}
+
+async function renderATests(){
+    let data=[];if(sb){try{const r=await sb.from('belleza_testimonials').select('*').order('created_at',{ascending:false});data=r.data||[]}catch(e){}}
+    document.getElementById('adminBody').innerHTML=`
+        <div class="a-form"><h3>➕ Add Review</h3>
+        <form onsubmit="saveATest(event)"><input type="hidden" id="etId">
+            <div class="form-row"><div class="form-group"><label>Name *</label><input type="text" id="atName" required placeholder="Customer name"></div><div class="form-group"><label>Role</label><input type="text" id="atRole" value="Customer" placeholder="e.g. Loyal Customer"></div></div>
+            <div class="form-group"><label>Content *</label><textarea id="atContent" rows="2" required placeholder="What they said..."></textarea></div>
+            <div class="form-row"><div class="form-group"><label>Rating (1-5)</label><input type="number" id="atRating" value="5" min="1" max="5"></div><div class="form-group" style="display:flex;align-items:flex-end"><button type="submit" class="btn btn-primary btn-sm" style="width:100%;max-width:100%"><i class="fas fa-save"></i> Save</button></div></div>
+        </form></div>
+        <div class="a-table-wrap"><div class="a-table-head"><h3>Reviews (${data.length})</h3></div><div class="a-table-scroll"><table>
+            <thead><tr><th>Author</th><th>Content</th><th>Rating</th><th>Act</th></tr></thead>
+            <tbody>${data.map(t=>'<tr><td><strong>'+t.author_name+'</strong><br><small>'+t.author_role+'</small></td><td style="max-width:200px"><small>'+t.content+'</small></td><td>'+('⭐'.repeat(t.rating))+'</td><td><button class="a-btn edit" onclick=\'editATest('+JSON.stringify(t).replace(/'/g,"&#39;")+')\'>✏️</button><button class="a-btn del" onclick="delATest(\''+t.id+'\')">🗑️</button></td></tr>').join('')||'<tr><td colspan="4" class="a-empty">No reviews yet</td></tr>'}</tbody>
+        </table></div></div>`;
+}
+async function saveATest(e){
+    e.preventDefault();if(!sb){toast('Database not connected','error');return}
+    const id=document.getElementById('etId').value;
+    const t={author_name:document.getElementById('atName').value.trim(),author_role:document.getElementById('atRole').value.trim()||'Customer',content:document.getElementById('atContent').value.trim(),rating:parseInt(document.getElementById('atRating').value)||5,is_active:true};
+    try{if(id){await sb.from('belleza_testimonials').update(t).eq('id',id);toast('Updated!')}else{await sb.from('belleza_testimonials').insert(t);toast('Added!')}renderATests();loadTests()}catch(e){toast('Error','error')}
+}
+function editATest(t){document.getElementById('etId').value=t.id;document.getElementById('atName').value=t.author_name;document.getElementById('atRole').value=t.author_role||'';document.getElementById('atContent').value=t.content;document.getElementById('atRating').value=t.rating}
+async function delATest(id){if(!confirm('Delete?'))return;try{await sb.from('belleza_testimonials').delete().eq('id',id);toast('Deleted');renderATests();loadTests()}catch(e){}}
+
+if(location.hash==='#admin')setTimeout(openAdmin,2500);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onload="initApp()" onerror="console.warn('Supabase CDN failed');initApp()"></script>
+</body>
+</html>
