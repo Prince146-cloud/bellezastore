@@ -452,7 +452,7 @@
 
 <main id="mainSite">
 <section class="hero" id="home">
-    <div class="hero-bg"><img src="https://i.imgur.com/fdQI2Ju.png" alt="Belleza Store Style"></div>
+    <div class="hero-bg"><img id="siteHeroImage" src="https://i.imgur.com/fdQI2Ju.png" alt="Belleza Store Style"></div>
     <div class="hero-overlay"></div><div class="particles" id="particles"></div>
     <div class="hero-content">
         <div class="hero-badge"><span class="dot"></span><span data-i18n="hero_badge"></span></div>
@@ -482,11 +482,11 @@
     <div class="g-glow g1"></div><div class="g-glow g2"></div>
     <div class="section-header reveal"><div class="section-label" data-i18n="gallery_label"></div><h2 class="section-title" data-i18n="gallery_title" data-i18n-html="true"></h2><p class="section-subtitle" data-i18n="gallery_desc"></p></div>
     <div class="gallery-grid">
-        <div class="gallery-item reveal" onclick="openLB('https://i.imgur.com/fdQI2Ju.png')"><img src="https://i.imgur.com/fdQI2Ju.png" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_featured"></span></div></div>
-        <div class="gallery-item reveal reveal-d1" onclick="openLB('https://i.imgur.com/2GU77Eg.jpeg')"><img src="https://i.imgur.com/2GU77Eg.jpeg" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_evening"></span></div></div>
-        <div class="gallery-item reveal reveal-d2" onclick="openLB('https://i.imgur.com/k3YoHjs.jpeg')"><img src="https://i.imgur.com/k3YoHjs.jpeg" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_casual"></span></div></div>
-        <div class="gallery-item reveal reveal-d3" onclick="openLB('https://i.imgur.com/BGGxcbm.png')"><img src="https://i.imgur.com/BGGxcbm.png" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_luxury"></span></div></div>
-        <div class="gallery-item reveal reveal-d4" onclick="openLB('https://i.imgur.com/eKE4WyD.png')"><img src="https://i.imgur.com/eKE4WyD.png" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_signature"></span></div></div>
+        <div class="gallery-item reveal" id="galleryItem1" onclick="openLB(document.getElementById('galleryImg1').src)"><img id="galleryImg1" src="https://i.imgur.com/fdQI2Ju.png" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_featured"></span></div></div>
+        <div class="gallery-item reveal reveal-d1" id="galleryItem2" onclick="openLB(document.getElementById('galleryImg2').src)"><img id="galleryImg2" src="https://i.imgur.com/2GU77Eg.jpeg" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_evening"></span></div></div>
+        <div class="gallery-item reveal reveal-d2" id="galleryItem3" onclick="openLB(document.getElementById('galleryImg3').src)"><img id="galleryImg3" src="https://i.imgur.com/k3YoHjs.jpeg" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_casual"></span></div></div>
+        <div class="gallery-item reveal reveal-d3" id="galleryItem4" onclick="openLB(document.getElementById('galleryImg4').src)"><img id="galleryImg4" src="https://i.imgur.com/BGGxcbm.png" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_luxury"></span></div></div>
+        <div class="gallery-item reveal reveal-d4" id="galleryItem5" onclick="openLB(document.getElementById('galleryImg5').src)"><img id="galleryImg5" src="https://i.imgur.com/eKE4WyD.png" alt="" loading="lazy"><div class="gallery-item-ov"><span data-i18n="gallery_signature"></span></div></div>
     </div>
 </section>
 
@@ -535,10 +535,10 @@
 <section class="ig-section">
     <div class="section-header reveal"><div class="section-label">@Belleza_store_style</div><h2 class="section-title" data-i18n="ig_title" data-i18n-html="true"></h2></div>
     <div class="ig-grid">
-        <div class="ig-item"><img src="https://i.imgur.com/2GU77Eg.jpeg" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
-        <div class="ig-item"><img src="https://i.imgur.com/k3YoHjs.jpeg" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
-        <div class="ig-item"><img src="https://i.imgur.com/BGGxcbm.png" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
-        <div class="ig-item"><img src="https://i.imgur.com/eKE4WyD.png" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
+        <div class="ig-item"><img id="igImg1" src="https://i.imgur.com/2GU77Eg.jpeg" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
+        <div class="ig-item"><img id="igImg2" src="https://i.imgur.com/k3YoHjs.jpeg" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
+        <div class="ig-item"><img id="igImg3" src="https://i.imgur.com/BGGxcbm.png" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
+        <div class="ig-item"><img id="igImg4" src="https://i.imgur.com/eKE4WyD.png" alt="" loading="lazy"><a href="https://www.instagram.com/Belleza_store_style" target="_blank" class="ig-ov"><i class="fab fa-instagram"></i></a></div>
     </div>
 </section>
 
@@ -572,7 +572,7 @@
 
 <div class="admin-bg" id="adminBg">
     <div class="admin-login" id="adminLogin"><div class="admin-login-box"><img src="https://i.imgur.com/XoNuPc2.jpeg" alt=""><h2>Admin Panel</h2><p>Sign in with your credentials</p><div id="loginError" class="admin-login-error"></div><form onsubmit="adminLoginGo(event)" id="adminLoginForm"><div class="form-group"><label><i class="fas fa-envelope"></i> Email</label><input type="email" id="adminEmail" required></div><div class="form-group"><label><i class="fas fa-lock"></i> Password</label><input type="password" id="adminPass" required></div><button type="submit" class="btn btn-primary" id="loginBtn" style="width:100%;max-width:100%"><i class="fas fa-sign-in-alt"></i> Sign In</button></form><button onclick="closeAdmin()" class="btn btn-sm btn-outline" style="margin-top:10px;width:100%;max-width:100%"><i class="fas fa-arrow-left"></i> Back</button></div></div>
-    <div class="admin-dash" id="adminDash"><div class="admin-top"><div class="logo"><img src="https://i.imgur.com/XoNuPc2.jpeg" alt=""><span>Belleza Admin</span><span id="adminUserEmail" class="admin-user-info"></span></div><div class="admin-top-btns"><button onclick="closeAdmin()" style="background:var(--cream);color:var(--text)"><i class="fas fa-external-link-alt"></i> Site</button><button onclick="adminOut()" style="background:#ffebee;color:#c62828"><i class="fas fa-sign-out-alt"></i> Logout</button></div></div><div id="adminTabs" class="admin-tabs"><button class="active" data-tab="dashboard" onclick="adminTab('dashboard',this)"><i class="fas fa-chart-pie"></i> Dashboard</button><button data-tab="products" onclick="adminTab('products',this)"><i class="fas fa-shopping-bag"></i> Products</button><button data-tab="orders" onclick="adminTab('orders',this)"><i class="fas fa-receipt"></i> Orders</button><button data-tab="subs" onclick="adminTab('subs',this)"><i class="fas fa-envelope"></i> Subs</button><button data-tab="msgs" onclick="adminTab('msgs',this)"><i class="fas fa-comment"></i> Msgs</button></div><div id="adminBody" class="admin-body"></div></div>
+    <div class="admin-dash" id="adminDash"><div class="admin-top"><div class="logo"><img src="https://i.imgur.com/XoNuPc2.jpeg" alt=""><span>Belleza Admin</span><span id="adminUserEmail" class="admin-user-info"></span></div><div class="admin-top-btns"><button onclick="closeAdmin()" style="background:var(--cream);color:var(--text)"><i class="fas fa-external-link-alt"></i> Site</button><button onclick="adminOut()" style="background:#ffebee;color:#c62828"><i class="fas fa-sign-out-alt"></i> Logout</button></div></div><div id="adminTabs" class="admin-tabs"><button class="active" data-tab="dashboard" onclick="adminTab('dashboard',this)"><i class="fas fa-chart-pie"></i> Dashboard</button><button data-tab="products" onclick="adminTab('products',this)"><i class="fas fa-shopping-bag"></i> Products</button><button data-tab="orders" onclick="adminTab('orders',this)"><i class="fas fa-receipt"></i> Orders</button><button data-tab="subs" onclick="adminTab('subs',this)"><i class="fas fa-envelope"></i> Subs</button><button data-tab="msgs" onclick="adminTab('msgs',this)"><i class="fas fa-comment"></i> Msgs</button><button data-tab="photos" onclick="adminTab('photos',this)"><i class="fas fa-images"></i> Photos</button><button data-tab="account" onclick="adminTab('account',this)"><i class="fas fa-user-shield"></i> Account</button></div><div id="adminBody" class="admin-body"></div></div>
 </div>
 
 <script>
@@ -616,8 +616,8 @@ function toggleLangDD(){document.getElementById('langDD').classList.toggle('open
 function closeLangDD(){document.getElementById('langDD').classList.remove('open');document.getElementById('langBtn').classList.remove('open')}
 document.addEventListener('click',e=>{if(!e.target.closest('.lang-switcher'))closeLangDD()});
 
-const SB_URL='https://gwcoxztfhsemzqlxqyfx.supabase.co';
-const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3Y294enRmaHNlbXpxbHhxeWZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MjUyOTcsImV4cCI6MjA4OTIwMTI5N30.okKGILHrCTXWx2TO17rpSWyfi-hN5uyPerLPchuDYTU';
+const SB_URL='https://nxyugslpymbxtrdcnkhb.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54eXVnc2xweW1ieHRyZGNua2hiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA3ODQ1NDEsImV4cCI6MjEwNjM1MDQxMX0.fswIEJf70nG9q1_l2HHM8MOmIlyEwJCea8I2-vpZlAU';
 const WA='250788249054';
 let sb=null,dbReady=false,adminUser=null;
 
@@ -640,7 +640,7 @@ setTimeout(hidePreloader,3000);
 
 function initApp(){
     try{if(window.supabase&&window.supabase.createClient){sb=window.supabase.createClient(SB_URL,SB_KEY,{auth:{storageKey:'belleza_admin_secure_session'}});dbReady=true;checkSession()}}catch(e){}
-    setLang(currentLang);loadProducts();loadTests();
+    setLang(currentLang);loadProducts();loadTests();loadSiteImages();
     setTimeout(hidePreloader,800);
 }
 
@@ -728,24 +728,70 @@ function closeLB(){document.getElementById('lightbox').classList.remove('active'
 document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox'))closeLB()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
 
-async function checkSession(){if(!sb)return;try{const{data:{session}}=await sb.auth.getSession();if(session?.user)adminUser=session.user}catch(e){}}
+async function checkSession(){if(!sb)return;try{const{data:{session}}=await sb.auth.getSession();if(session?.user&&String(session.user.email||'').toLowerCase()==='bellezastorestyle@gmail.com')adminUser=session.user;else if(session?.user)await sb.auth.signOut()}catch(e){}}
 function openAdmin(){document.getElementById('adminBg').classList.add('active');document.getElementById('waFloat').style.display='none';document.body.style.overflow='hidden';if(adminUser)showDash();else{document.getElementById('adminLogin').style.display='';document.getElementById('adminDash').classList.remove('active')}}
 function closeAdmin(){document.getElementById('adminBg').classList.remove('active');document.getElementById('waFloat').style.display='';document.body.style.overflow=''}
 async function adminLoginGo(e){
     e.preventDefault();const errEl=document.getElementById('loginError');errEl.style.display='none';
     if(!sb){errEl.textContent='Database not available';errEl.style.display='block';return}
     const btn=document.getElementById('loginBtn');btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Signing in...';
-    try{const{data,error}=await sb.auth.signInWithPassword({email:document.getElementById('adminEmail').value.trim(),password:document.getElementById('adminPass').value});
+    try{const loginEmail=document.getElementById('adminEmail').value.trim().toLowerCase();if(loginEmail!=='bellezastorestyle@gmail.com'){errEl.textContent='This account is not authorized as the Belleza admin.';errEl.style.display='block';btn.disabled=false;btn.innerHTML='<i class="fas fa-sign-in-alt"></i> Sign In';return}const{data,error}=await sb.auth.signInWithPassword({email:loginEmail,password:document.getElementById('adminPass').value});
         if(error){errEl.textContent=error.message.includes('Invalid')?'Invalid email or password':error.message;errEl.style.display='block';btn.disabled=false;btn.innerHTML='<i class="fas fa-sign-in-alt"></i> Sign In';return}
         if(data?.user){adminUser=data.user;toast('Welcome! 🎉');showDash();document.getElementById('adminLoginForm').reset()}
     }catch(err){errEl.textContent='Connection error';errEl.style.display='block'}
     btn.disabled=false;btn.innerHTML='<i class="fas fa-sign-in-alt"></i> Sign In';
 }
 async function adminOut(){if(sb)try{await sb.auth.signOut()}catch(e){};adminUser=null;document.getElementById('adminLogin').style.display='';document.getElementById('adminDash').classList.remove('active');toast('Signed out','info')}
-function showDash(){document.getElementById('adminLogin').style.display='none';document.getElementById('adminDash').classList.add('active');const e_user=document.getElementById('adminUserEmail');if(e_user&&adminUser){e_user.textContent='('+adminUser.email+')';e_user.style.display='inline'}adminTab('dashboard',document.querySelector('[data-tab="dashboard"]'))}
+function showDash(){if(!adminUser||String(adminUser.email||'').toLowerCase()!=='bellezastorestyle@gmail.com'){adminUser=null;document.getElementById('adminLogin').style.display='';document.getElementById('adminDash').classList.remove('active');return}document.getElementById('adminLogin').style.display='none';document.getElementById('adminDash').classList.add('active');const e_user=document.getElementById('adminUserEmail');if(e_user&&adminUser){e_user.textContent='('+adminUser.email+')';e_user.style.display='inline'}adminTab('dashboard',document.querySelector('[data-tab="dashboard"]'))}
 function adminTab(tab,btn){document.querySelectorAll('#adminTabs button').forEach(b=>{b.classList.remove('active')});if(btn)btn.classList.add('active');const body=document.getElementById('adminBody');body.innerHTML='<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
-    switch(tab){case'dashboard':renderADash();break;case'products':renderAProds();break;case'orders':renderAOrds();break;case'subs':renderASubs();break;case'msgs':renderAMsgs();break}}
+    switch(tab){case'dashboard':renderADash();break;case'products':renderAProds();break;case'orders':renderAOrds();break;case'subs':renderASubs();break;case'msgs':renderAMsgs();break;case'photos':renderAPhotos();break;case'account':renderAAccount();break}}
 function fmtD(d){return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}
+
+
+const SITE_IMAGE_DEFAULTS={
+  hero:'https://i.imgur.com/fdQI2Ju.png',
+  gallery1:'https://i.imgur.com/fdQI2Ju.png',
+  gallery2:'https://i.imgur.com/2GU77Eg.jpeg',
+  gallery3:'https://i.imgur.com/k3YoHjs.jpeg',
+  gallery4:'https://i.imgur.com/BGGxcbm.png',
+  gallery5:'https://i.imgur.com/eKE4WyD.png'
+};
+const SITE_IMAGE_LABELS={hero:'Hero image',gallery1:'Gallery — Featured',gallery2:'Gallery — Evening',gallery3:'Gallery — Casual',gallery4:'Gallery — Luxury',gallery5:'Gallery — Signature'};
+async function loadSiteImages(){
+  if(!sb)return;
+  try{const r=await sb.from('belleza_site_images').select('slot,image_url'); if(r.error)return;
+    const map={...SITE_IMAGE_DEFAULTS}; (r.data||[]).forEach(x=>{if(x.slot&&x.image_url)map[x.slot]=x.image_url});
+    const hero=document.getElementById('siteHeroImage'); if(hero)hero.src=map.hero;
+    for(let i=1;i<=5;i++){const gi=document.getElementById('galleryImg'+i);if(gi)gi.src=map['gallery'+i];}
+    for(let i=1;i<=4;i++){const ii=document.getElementById('igImg'+i);if(ii)ii.src=map['gallery'+(i+1)];}
+  }catch(e){console.warn('Site images unavailable',e)}
+}
+function siteImageCard(slot,url){return `<div style="background:var(--white);border-radius:16px;padding:12px;border:1px solid #eee"><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><img src="${url}" style="width:58px;height:58px;border-radius:10px;object-fit:cover"><div><strong style="font-size:.82rem;color:var(--primary)">${SITE_IMAGE_LABELS[slot]}</strong><div style="font-size:.65rem;color:var(--text-light);word-break:break-all">${url}</div></div></div><input type="file" accept="image/*" id="siteFile_${slot}" style="width:100%;padding:8px;border:2px solid #eee;border-radius:9px;background:var(--cream);font-size:.72rem"><button onclick="uploadSiteImage('${slot}')" class="btn btn-primary btn-sm" style="width:100%;max-width:100%;margin-top:8px"><i class="fas fa-upload"></i> Upload / Replace</button></div>`}
+async function renderAPhotos(){
+  let rows=[]; if(sb){const r=await sb.from('belleza_site_images').select('*'); if(!r.error)rows=r.data||[];}
+  const map={...SITE_IMAGE_DEFAULTS};rows.forEach(x=>{if(x.slot&&x.image_url)map[x.slot]=x.image_url});
+  document.getElementById('adminBody').innerHTML=`<div style="background:var(--white);border-radius:16px;padding:16px;margin-bottom:15px"><h3 style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:6px;color:var(--primary)">Manage Website Photos</h3><p style="font-size:.74rem;color:var(--text-light);line-height:1.6;margin-bottom:15px">Upload a new image for any slot. Changes are saved to Supabase and appear for every visitor.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">${Object.keys(SITE_IMAGE_DEFAULTS).map(k=>siteImageCard(k,map[k])).join('')}</div></div>`;
+}
+async function uploadSiteImage(slot){
+  if(!adminUser){toast('Please sign in first','error');return}
+  const input=document.getElementById('siteFile_'+slot); if(!input||!input.files.length){toast('Choose an image first','error');return}
+  const file=input.files[0]; if(!file.type.startsWith('image/')){toast('Please select an image','error');return}
+  if(file.size>8*1024*1024){toast('Image must be 8MB or smaller','error');return}
+  const btn=input.parentElement.querySelector('button'); const old=btn.innerHTML; btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Uploading...';
+  try{
+    const ext=(file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'');
+    const path='site/'+slot+'_'+Date.now()+'.'+ext;
+    const up=await sb.storage.from('belleza_images').upload(path,file,{upsert:false,contentType:file.type}); if(up.error)throw up.error;
+    const pub=sb.storage.from('belleza_images').getPublicUrl(path).data.publicUrl;
+    const saved=await sb.from('belleza_site_images').upsert({slot,image_url:pub,updated_at:new Date().toISOString()},{onConflict:'slot'}); if(saved.error)throw saved.error;
+    toast('Photo updated successfully'); await loadSiteImages(); await renderAPhotos();
+  }catch(e){toast('Upload failed: '+e.message,'error')}finally{btn.disabled=false;btn.innerHTML=old}
+}
+async function renderAAccount(){
+  document.getElementById('adminBody').innerHTML=`<div style="background:var(--white);border-radius:16px;padding:18px;margin-bottom:12px"><h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--primary);margin-bottom:6px">Admin Account</h3><p style="font-size:.74rem;color:var(--text-light);line-height:1.6">This Belleza dashboard has one authorized administrator.</p><div style="background:var(--cream);padding:12px;border-radius:10px;margin-top:12px"><div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.7px;color:var(--text-light);margin-bottom:4px">Admin email</div><strong style="font-size:.85rem;color:var(--primary)">bellezastorestyle@gmail.com</strong></div></div><div style="background:var(--white);border-radius:16px;padding:18px"><h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--primary);margin-bottom:5px">Change Password</h3><p style="font-size:.74rem;color:var(--text-light);line-height:1.6;margin-bottom:15px">Use a strong password of at least 8 characters.</p><form onsubmit="updateAdminPassword(event)"><div class="form-group"><label>New password</label><input type="password" id="newAdminPass" minlength="8" required style="background:var(--cream)"></div><div class="form-group"><label>Confirm new password</label><input type="password" id="newAdminPass2" minlength="8" required style="background:var(--cream)"></div><button class="btn btn-primary btn-sm" type="submit" style="width:100%;max-width:100%"><i class="fas fa-key"></i> Change Password</button></form></div>`;
+}
+async function updateAdminEmail(e){e.preventDefault();toast('The Belleza admin email is fixed to bellezastorestyle@gmail.com.','info')}
+async function updateAdminPassword(e){e.preventDefault();if(!sb||!adminUser)return;const a=document.getElementById('newAdminPass').value,b=document.getElementById('newAdminPass2').value;if(a!==b){toast('Passwords do not match','error');return}try{const r=await sb.auth.updateUser({password:a});if(r.error)throw r.error;toast('Password changed successfully');e.target.reset()}catch(err){toast(err.message,'error')}}
 
 async function renderADash(){let pc=0,oc=0,sc=0,mc=0,recent=[];if(sb){try{const[p,o,s,m]=await Promise.all([sb.from('belleza_products').select('id',{count:'exact',head:true}),sb.from('belleza_orders').select('id',{count:'exact',head:true}),sb.from('belleza_subscribers').select('id',{count:'exact',head:true}),sb.from('belleza_contacts').select('id',{count:'exact',head:true})]);pc=p.count||0;oc=o.count||0;sc=s.count||0;mc=m.count||0;const r=await sb.from('belleza_orders').select('*').order('created_at',{ascending:false}).limit(5);recent=r.data||[]}catch(e){}}
 document.getElementById('adminBody').innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:15px"><div style="background:var(--white);border-radius:16px;padding:14px"><div style="width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-bottom:8px;background:rgba(233,69,96,.1);color:var(--accent)"><i class="fas fa-shopping-bag"></i></div><div style="font-size:1.3rem;font-weight:700;color:var(--primary)">${pc}</div><div style="font-size:.65rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.8px">Products</div></div><div style="background:var(--white);border-radius:16px;padding:14px"><div style="width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-bottom:8px;background:rgba(37,211,102,.1);color:#25D366"><i class="fas fa-receipt"></i></div><div style="font-size:1.3rem;font-weight:700;color:var(--primary)">${oc}</div><div style="font-size:.65rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.8px">Orders</div></div><div style="background:var(--white);border-radius:16px;padding:14px"><div style="width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-bottom:8px;background:rgba(33,150,243,.1);color:#2196F3"><i class="fas fa-envelope"></i></div><div style="font-size:1.3rem;font-weight:700;color:var(--primary)">${sc}</div><div style="font-size:.65rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.8px">Subscribers</div></div><div style="background:var(--white);border-radius:16px;padding:14px"><div style="width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-bottom:8px;background:rgba(255,152,0,.1);color:#ff9800"><i class="fas fa-comment"></i></div><div style="font-size:1.3rem;font-weight:700;color:var(--primary)">${mc}</div><div style="font-size:.65rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.8px">Messages</div></div></div><div style="background:var(--white);border-radius:16px;overflow:hidden"><div style="padding:12px 14px;border-bottom:1px solid #eee"><h3 style="font-family:'Playfair Display',serif;font-size:.95rem;color:var(--primary)">Recent Orders</h3></div><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;min-width:450px"><thead><tr><th style="text-align:left;padding:10px 12px;font-size:.68rem;font-weight:600;text-transform:uppercase;color:var(--text-light);background:var(--cream)">Customer</th><th style="text-align:left;padding:10px 12px;font-size:.68rem;font-weight:600;text-transform:uppercase;color:var(--text-light);background:var(--cream)">Product</th><th style="text-align:left;padding:10px 12px;font-size:.68rem;font-weight:600;text-transform:uppercase;color:var(--text-light);background:var(--cream)">Date</th></tr></thead><tbody>${recent.map(o=>'<tr><td style="padding:10px 12px;font-size:.78rem;border-bottom:1px solid #f5f5f5"><strong>'+o.customer_name+'</strong></td><td style="padding:10px 12px;font-size:.78rem;border-bottom:1px solid #f5f5f5">'+(o.product_name||'-')+'</td><td style="padding:10px 12px;font-size:.78rem;border-bottom:1px solid #f5f5f5"><small>'+fmtD(o.created_at)+'</small></td></tr>').join('')||'<tr><td colspan="3" style="text-align:center;padding:25px;color:var(--text-light)">No orders yet</td></tr>'}</tbody></table></div></div>`}
