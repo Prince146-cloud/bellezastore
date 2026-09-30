@@ -617,9 +617,9 @@ function closeLangDD(){document.getElementById('langDD').classList.remove('open'
 document.addEventListener('click',e=>{if(!e.target.closest('.lang-switcher'))closeLangDD()});
 
 const SB_URL='https://nxyugslpymbxtrdcnkhb.supabase.co';
-const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54eXVnc2xweW1ieHRyZGNua2hiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA3ODQ1NDEsImV4cCI6MjEwNjM1MDQxMX0.fswIEJf70nG9q1_l2HHM8MOmIlyEwJCea8I2-vpZlAU';
+const SB_KEY='sb_publishable_vnm0IokVAfHF-PwjYx89rA_LA-7rj_i';
 const WA='250788249054';
-let sb=null,dbReady=false,adminUser=null;
+let sb=null,dbReady=false,adminUser=null,appInitialized=false;
 
 const FP=[
     {id:'f1',name:'Elegant Evening Collection',category:'Evening Wear',description:'Stunning evening wear for unforgettable moments.',image_url:'https://i.imgur.com/2GU77Eg.jpeg',badge:'New In',badge_color:'#e94560'},
@@ -639,14 +639,36 @@ function hidePreloader(){document.getElementById('preloader').classList.add('hid
 setTimeout(hidePreloader,3000);
 
 function initApp(){
-    try{if(window.supabase&&window.supabase.createClient){sb=window.supabase.createClient(SB_URL,SB_KEY,{auth:{storageKey:'belleza_admin_secure_session'}});dbReady=true;checkSession()}}catch(e){}
-    setLang(currentLang);loadProducts();loadTests();loadSiteImages();
+    if(appInitialized)return;
+    appInitialized=true;
+
+    try{
+        if(window.supabase&&window.supabase.createClient){
+            sb=window.supabase.createClient(SB_URL,SB_KEY,{
+                auth:{
+                    storageKey:'belleza_admin_secure_session_v2',
+                    persistSession:true,
+                    autoRefreshToken:true,
+                    detectSessionInUrl:true
+                }
+            });
+            dbReady=true;
+            checkSession();
+        }else{
+            dbReady=false;
+            console.warn('Supabase client library did not load; using local fallback data.');
+        }
+    }catch(e){
+        dbReady=false;
+        console.error('Supabase initialization failed:',e);
+    }
+
+    setLang(currentLang);
+    loadProducts();
+    loadTests();
+    loadSiteImages();
     setTimeout(hidePreloader,800);
 }
-
-if(document.readyState==='complete'||document.readyState==='interactive')setTimeout(initApp,100);
-document.addEventListener('DOMContentLoaded',()=>setTimeout(initApp,100));
-window.addEventListener('load',()=>setTimeout(initApp,200));
 
 function toast(msg,type='success'){const c=document.getElementById('toastBox');const t_el=document.createElement('div');t_el.className='toast '+type;t_el.innerHTML='<i class="fas fa-'+(type==='success'?'check':type==='error'?'exclamation':'info')+'-circle"></i><span>'+msg+'</span>';c.appendChild(t_el);setTimeout(()=>{t_el.style.opacity='0';setTimeout(()=>t_el.remove(),300)},3500)}
 function t(key){return(T[currentLang]||T.en)[key]||(T.en)[key]||key}
